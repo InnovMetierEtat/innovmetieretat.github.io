@@ -22,7 +22,8 @@ publicly accessible.
 
  the number of people willing to travel after work.
  
- ## Evénements
+## Evénements
+
 ### Hackathon DGGN
 Hack days have special requirements: don't just trust anyone who tells you that"it'll be fine". Think about the networking issues, and verify that they workfor the kind of capacity you are going to have. People from the venue or theircommercial partner will tell you all sorts of things you want to hear but keepin the back of your mind that they may not have any clue what they are talkingabout. Given the importance of network access, if you are operating a commercialevent consider requiring network performance as part of your contract withvenues and suppliers.
 
