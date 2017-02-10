@@ -3,16 +3,14 @@ title: The Hack Day Manifesto
 layout: default
 ---
 
-# [The Hack Day Manifesto][self]
+# [Innovation Métier de l'Etat][self]
 
-So you're organising a hack day or hackathon? Here are some basic requirements
-to make your event a success, and avoid the common pitfalls that could otherwise
-ruin it. If you cannot provide any of the following, make it clear to guests
+If you cannot provide any of the following, make it clear to guests
 before registration. Attendees are generally forgiving when clear communication
 is given. These are only guidelines, but exist to help you run a hack day in the
 easiest possible way.
 
-## Announcing the event
+## Réflexions sur les Savoir-Faire et l'Innovation
 
 Once you know when and how your event will take place, you'll want to tell the
 world about it. At a bare minimum, you should decide on a canonical place where
@@ -20,81 +18,15 @@ all public information about the event lives - this might be a dedicated web
 site, an event on an existing event online service or some other place which is
 publicly accessible.
 
-Once you've decided where that location is, use tools like Twitter and Facebook
-to make people aware of the event, and also consider which Google Groups and
-mailing lists developers relevant to your event may be hanging out. Don't spam
-them, though - nobody enjoys that.
+## Kit de l'Innovation Métier
 
-### Registration _Optional_
+ the number of people willing to travel after work.
+ 
+ ## Evénements
+### Hackathon DGGN
+Hack days have special requirements: don't just trust anyone who tells you that"it'll be fine". Think about the networking issues, and verify that they workfor the kind of capacity you are going to have. People from the venue or theircommercial partner will tell you all sorts of things you want to hear but keepin the back of your mind that they may not have any clue what they are talkingabout. Given the importance of network access, if you are operating a commercialevent consider requiring network performance as part of your contract withvenues and suppliers.
 
-If you require your attendees to register, make it clear what information is
-required for signing up and what the deadline for the registration is. If
-there's a maximum number of attendees the venue can handle, communicate how the
-selection process works and when/how people will be notified if they've been
-granted attendance or not.
-
-If there's a waiting list for the event, make sure to explain how it works.
-
-Most registration forms lets applicants enter name, contact details and food
-preferences/allergies (if applicable). Depending on your event and your venue,
-you might want to ask for additional information - this manifesto lists a few
-other topics which might make sense to add to the registration form.
-
-There are also a number of things you probably should _not_ ask for, like
-gender, religious preferences etc.
-
-## Venue
-
-### Location
-
-The venue should be relatively easy for people from outside of town to locate,
-with good public transport links. If it's difficult to reach, try to provide
-alternative means of transportation, such as coaches to/from local transport
-hubs throughout the event. Provide a full address, and if necessary,
-additional instructions to all attendees well in advance of the event.
-
-Include instructions/contacts/getting in arrangements, too (i.e., what
-to do at reception/security desks).
-
-Print big signs that will guide your attendees to the venue (and in some case
-inside the venue).
-
-### Accessibility
-
-Hack day venues should be accessible to everyone: at a bare minimum, there
-should be step-free access to all common parts of the building. If an attendee
-is blind or deaf, they should be able to participate too. Make sure your event
-signup forms mention accessibility and ask what accommodations might be needed.
-
-### Insurance
-
-Does your venue have the relevant insurance? Are guests' belongings protected in
-case of fire or theft? If not, you should make them aware of the risks so they
-can take extra precautions.
-
-Do you, as an organizer have adequate insurance?
-
-### Security
-
-Attendees will often be bringing a lot of expensive kit: laptops, tablets, etc.
-Make sure they have some security. If the venue does not have some form of
-lockers, can you run a cloakroom system?
-
-### Secure sites and photo ID
-
-Are the rooms going to be available to non-attendees? Work out whether you are
-running a secure site and whether people need to bring photo ID; if so, tell
-them when they sign up and remind them close to the event date. For some people,
-showing photo ID may be a deal breaker. Not everyone will have
-'government issued ID', either. Providing proof of address may be hard for some.
-
-## Dates
-
-### Weekend or Not?
-
-Most hack days are held at the weekend as this allows people to attend without
-taking time off work. If you are planning a hack day that begins on a Friday,
-remember that this may limit the number of people willing to travel after work.
+-------------- TEST ---------------------------------
 
 ### Checking for clashes
 
