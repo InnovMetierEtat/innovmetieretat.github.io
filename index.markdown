@@ -1,5 +1,5 @@
 ---
-title: The Hack Day Manifesto
+title: The Hack Day Manifesto Rewamped !
 layout: default
 ---
 
