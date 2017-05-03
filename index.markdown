@@ -10,7 +10,7 @@ before registration. Attendees are generally forgiving when clear communication
 is given. These are only guidelines, but exist to help you run a hack day in the
 easiest possible way.
 
-## Réflexions sur les Savoir-Faire et l'Innovation
+## Réflexions sur les Savoir-Faire et l'Innovation Métier de l'Etat
 
 Once you know when and how your event will take place, you'll want to tell the
 world about it. At a bare minimum, you should decide on a canonical place where
