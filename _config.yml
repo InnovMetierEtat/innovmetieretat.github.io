@@ -4,4 +4,4 @@ defaults:
   - scope:
       path: "files"
     values:
-      doc: true
+      file: true

@@ -4,7 +4,9 @@ title: File
 ---
 
 
-{% assign doc_files = site.static_files | where: "doc", true %}
-{% for mydoc in doc_files %}
-  {{ mydoc.path }}<br>
+{% assign file_files = site.static_files | where: "file", true %}
+{% for myfile in file_files %}
+{% if myfile.filename %}
+  {{ myfile.path }}<br>
+{% endif %}
 {% endfor %}
