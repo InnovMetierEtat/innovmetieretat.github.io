@@ -8,6 +8,5 @@ title: Tous les documents
 {% if myfile.extname contains 'pdf' or myfile.extname contains 'PDF' or myfile.extname contains 'doc' or myfile.extname contains 'DOC' or myfile.extname contains 'odp' myfile.extname contains 'ODP' or myfile.extname contains 'ppt' or myfile.extname contains 'PPT' or myfile.extname contains 'odt' or myfile.extname contains 'ODT' %}
  
 {{myfile.basename}} : <a href ="{{ myfile.path }}" >{{ myfile.path }}</a> <br>
-[{{myfile.path}}]({{ myfile.path }}) <br>
 {% endif %}
 {% endfor %}
