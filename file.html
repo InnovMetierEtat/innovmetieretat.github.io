@@ -6,7 +6,7 @@ title: File
 
 {% assign file_files = site.static_files | where: "file", true %}
 {% for myfile in file_files %}
-{% if myfile.filename %}
+{% if myfile.filename != MD  %}
   {{ myfile.path }}<br>
 {% endif %}
 {% endfor %}
