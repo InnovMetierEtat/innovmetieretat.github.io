@@ -2,6 +2,6 @@ theme: jekyll-theme-tactile
 
 defaults:
   - scope:
-      path: "assets"
+      path: "files"
     values:
       doc: true
