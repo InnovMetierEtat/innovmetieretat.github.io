@@ -5,8 +5,7 @@ title: Tous les documents
 
 {% assign file_files = site.static_files | where: "file", true %}
 {% for myfile in file_files %}
-{% if myfile.extname contains 'pdf' or myfile.extname contains 'PDF' or myfile.extname contains 'doc' or myfile.extname contains 'DOC' or myfile.extname contains 'odp' myfile.extname contains 'ODP' or myfile.extname contains 'ppt' or myfile.extname contains 'PPT' or myfile.extname contains 'odt' or myfile.extname contains 'ODT' %}
- 
+{% if myfile.extname contains 'pdf' or myfile.extname contains 'PDF' or myfile.extname contains 'Pdf' or myfile.extname contains 'odp' or myfile.extname contains 'ODP' or myfile.extname contains 'Odp' or myfile.extname contains 'odt' or myfile.extname contains 'ODT' or myfile.extname contains 'Odt' or myfile.extname contains 'ods' or myfile.extname contains 'ODS' or myfile.extname contains 'Ods' or myfile.extname contains 'doc' or myfile.extname contains 'DOC' or myfile.extname contains 'Doc' or myfile.extname contains 'ppt' or myfile.extname contains 'PPT' or myfile.extname contains 'Ppt' or myfile.extname contains 'xls' or myfile.extname contains 'XLS' or myfile.extname contains 'Xls' %}
 {{myfile.basename}} : <a href ="{{ myfile.path }}" >{{ myfile.path }}</a> <br>
 {% endif %}
 {% endfor %}
