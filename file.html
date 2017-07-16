@@ -1,0 +1,10 @@
+---
+layout: default
+title: File
+---
+
+
+{% assign doc_files = site.static_files | where: "doc", true %}
+{% for mydoc in doc_files %}
+  {{ mydoc.path }}<br>
+{% endfor %}
