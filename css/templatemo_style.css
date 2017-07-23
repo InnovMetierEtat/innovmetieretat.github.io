@@ -230,8 +230,13 @@ img {
   position: relative;
 }
 .hexagon-a a.hlinktop:hover .hexa-a {
-  background: #00ACE9;
+  background: #FFFFFF;
   color: #fff;
+}
+
+.copyleft {
+  display:inline-block;
+  transform: rotate(180deg);
 }
 
 .hexagon {
@@ -247,7 +252,7 @@ img {
 }
 
 .hexagon a.hlinkbott:hover .hexa {
-  background: #0094D3;
+  background: #FFFFFF;
 }
 
 /* mid hexa */
@@ -323,9 +328,9 @@ img {
   height: 0;
   padding-bottom: 57.7%;
   margin: 30% 0 0;
-  background: #0094D3;
+  background: #FFFFFF;
   position: absolute;
-  color: #FFF;
+  color: #FFFFFF;
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 14px;
   -webkit-transition: all 0.2s ease-in-out;
