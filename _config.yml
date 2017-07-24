@@ -2,6 +2,16 @@ theme: jekyll-theme-tactile
 
 defaults:
   - scope:
-      path: "files"
+      path: "files/1.méthodes"
     values:
-      file: true
+      methodes: true
+  - scope:
+      path: "files/2.modèles"
+    values:
+      modeles: true
+
+  - scope:
+      path: "files/3.cas-d-usages"
+    values:
+      casdusages: true
+
