@@ -1,0 +1,42 @@
+---
+title: Modèles
+permalink: modeles.html
+layout: default
+---
+
+<h3><strong>Modèles</strong></h3>
+
+
+{% assign modeles_files = site.static_files | where: "modeles", true %}
+{% for file in modeles_files %}
+{% if file.extname contains 'jpg' or
+file.extname contains 'JPG' or
+file.extname contains 'Jpg' or
+file.extname contains 'png' or
+file.extname contains 'PNG' or
+file.extname contains 'Png' or
+file.extname contains 'pdf' or
+file.extname contains 'PDF' or
+file.extname contains 'Pdf' or
+file.extname contains 'odp' or
+file.extname contains 'ODP' or
+file.extname contains 'Odp' or
+file.extname contains 'odt' or
+file.extname contains 'ODT' or
+file.extname contains 'Odt' or
+file.extname contains 'ods' or
+file.extname contains 'ODS' or
+file.extname contains 'Ods' or
+file.extname contains 'doc' or
+file.extname contains 'DOC' or
+file.extname contains 'Doc' or
+file.extname contains 'ppt' or
+file.extname contains 'PPT' or
+file.extname contains 'Ppt' or
+file.extname contains 'xls' or
+file.extname contains 'XLS' or
+file.extname contains 'Xls'%}
+{{file.basename}} : <a href ="{{ file.path }}" >{{ file.path }}</a> <br>
+{% endif %}
+{% endfor %}
+
