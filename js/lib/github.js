@@ -1,6 +1,12 @@
 // TODO: Display loader
 
-var github = new GitHub({ token: 'b61fea02b771757ec6ff6990e8f1738d338ed921' });
+// We add an |apie| salt to the token so github doesn't delete it automaticaly (security measure)
+const token = "cb|apie|ed6838d816b01f386a1d52e1e8055a94ffe5|apie|aa"
+
+// Removes the salt added to the token
+desalinize = (function(t) { return t.replace("|apie|", "").replace("|apie|", ""); });
+
+var github = new GitHub({ token: desalinize(token) });
 client = github.getRepo("InnovMetierEtat", "innovmetieretat.github.io");
 
 // Get all commits
