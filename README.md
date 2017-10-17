@@ -70,7 +70,7 @@ $ bundle install
 
 ### Write your code
 
-All react code goes in `assets/javascripts/`
+All react code goes in `webpack/entry.js` and other files in `webpack/`
 
 ### Run your code
 
