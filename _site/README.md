@@ -51,13 +51,14 @@ innovmetieretat.github.io/
 
 ### Install NPM & Node
 
+switch to dev
 If you don't have node install it, run:
 ```
 $ [sudo] install npm -g
 ```
 
 ### Install dependencies
-
+ou je me place 
 Then install webpack, which we will use to convert our JSX/ES6 files to JS:
 ```
 $ npm install webpack -g
@@ -80,3 +81,6 @@ All react code goes in `webpack/entry.js` and other files in `webpack/`
 
 ### Have fun!
 
+## TODO
+
+Tutorial on how to add new categories ?

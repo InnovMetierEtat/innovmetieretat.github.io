@@ -4,7 +4,8 @@
    var default_view = 'grid';
    if($.cookie('view') !== 'undefined'){
      $.cookie('view', default_view, { expires: 7, path: '/' });
-   } 
+   }
+   /*
    function get_grid(){
      $('.list').removeClass('list-active');
      $('.grid').addClass('grid-active');
@@ -53,7 +54,7 @@
      get_grid();
    });
 
-   /* filter */
+    filter 
    $('.menuSwitch ul li').click(function(){
      var CategoryID = $(this).attr('category');
      $('.menuSwitch ul li').removeClass('cat-active');
@@ -65,7 +66,7 @@
        };
      });
      $('.'+CategoryID).fadeIn(); 
-   });
+   });*/
  });
 </script>
 

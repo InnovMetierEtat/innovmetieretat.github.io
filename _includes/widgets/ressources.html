@@ -1,0 +1,11 @@
+{% if include.filter == "all" %}
+{% assign where_params = "parse" %}
+{% else %}
+{% assign where_params = include.filter %}
+{% endif %}
+{% assign files_list = site.static_files | where: where_params, true | jsonify %}
+
+<div id="ressources-widget" react-element="true" data-max="{{ include.max }}" data-fullsearch="{{ include.fullSearch }}">
+  <script data-set="true">{{ files_list }}</script>
+</div>
+

@@ -9,7 +9,12 @@ layout: default
       <div class="col-md-12">
         <div class="secHeader">
           <h1 class="text-center">Kit de l'Innovation Métier</h1>
-          <p class="text-center"><small>Afin de permettre aux agents publics de disposer de ressources pour les accompagner sur le chemin de l'innovation, l’idée à germée de partager, mettre en commun des connaissances, des outils, et/ou des ressources issues des administrations. Cette idée initiale s'est progressivement cristallisée sous la forme d'un Kit de l'innovation métier de l'État. L’objectif est de partager trois types de connaissances pertinentes pour des innovateurs publics. </small><form><input type="search" class="form-control" id="search-engine" placeholder="Rechercher..."></form></p>
+          <p class="text-center"><small>Afin de permettre aux agents publics de disposer de ressources pour les accompagner sur le chemin de l'innovation, l’idée à germée de partager, mettre en commun des connaissances, des outils, et/ou des ressources issues des administrations. Cette idée initiale s'est progressivement cristallisée sous la forme d'un Kit de l'innovation métier de l'État. L’objectif est de partager trois types de connaissances pertinentes pour des innovateurs publics. </small>
+            <form method="GET" action="/search.html">
+              <input type="text" name="search" class="form-control" id="search-engine" placeholder="Organiser un barcamp">
+              <button class="btn btn-primary">Rechercher</button>
+            </form>
+          </p>
         </div>
         <div class="row">
           <div class="col-xs-6 col-sm-6 col-md-3">
@@ -140,7 +145,7 @@ layout: default
   </div>
 </div> <!-- e/o section1 -->
 
-<div id="templatemo_portfolio" class="section2">
+<div id="templatemo_portfolio" class="section2 homepage-ressources">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -148,175 +153,7 @@ layout: default
           <h1 class="text-center">Ressources</h1>
           <p class="text-center"><small>Ces connaissances sont classées de différentes façons afin de permettre aux innovateurs de trouver l'information qu'ils souhaitent le plus rapidement possible. Le kit de l'innovation métier est proposé sous format libre, que ce soit les contenus du Kit mais également le support digital disponible sur Github, qui peut donc être réutilisé librement. Les contenus sont fournis par l'ensemble des innovateurs publics qui partagent leurs ressources de cette façon.'</small></p>
         </div>
-        <div class="glView">
-          <div class="switcher">
-            <ul>
-              <li id="grid" class="grid"><i class="fa fa-th-large"></i></li>
-              <li id="list" class="list"><i class="fa fa-align-justify"></i></li>
-            </ul>
-          </div>
-          <div class="menuSwitch">
-            <ul>
-              <li class="cat-active" category="prod-cnt">Toutes</li>
-              <li class="creativite" category="webdesign">Créativité</li>
-              <li class="juridique" category="graphic">Juridique</li>
-              <li class="marches" category="inspiration">Marchés publics</li>
-              <li class="documentation" category="creative">Documentation</li>
-              <li class="parangonnage" category="webdesign">Parangonnage</li>
-              <li class="technologies" category="graphic">Technologies</li>
-              <li class="communication" category="inspiration">Communication</li>
-              <li class="lieux" category="creative">Lieux et Evénements</li>
-              <li class="inventions" category="webdesign">Inventions</li>
-              <li class="autres" category="graphic">Autres</li>
-            </ul>
-          </div>
-
-          <div id="ressources-widget" react-element="true"></div>
-
-          {% assign all_files = site.static_files | where: "parse", true %}
-          <div class="imgSwitch items-container">
-            <div class="row">
-              {% for file in all_files %}
-              {% if file.extname contains 'jpg' or
-              file.extname contains 'JPG' or
-              file.extname contains 'Jpg' or
-              file.extname contains 'png' or
-              file.extname contains 'PNG' or
-              file.extname contains 'Png' or
-              file.extname contains 'pdf' or
-              file.extname contains 'PDF' or
-              file.extname contains 'Pdf' or
-              file.extname contains 'odp' or
-              file.extname contains 'ODP' or
-              file.extname contains 'Odp' or
-              file.extname contains 'odt' or
-              file.extname contains 'ODT' or
-              file.extname contains 'Odt' or
-              file.extname contains 'ods' or
-              file.extname contains 'ODS' or
-              file.extname contains 'Ods' or
-              file.extname contains 'doc' or
-              file.extname contains 'DOC' or
-              file.extname contains 'Doc' or
-              file.extname contains 'ppt' or
-              file.extname contains 'PPT' or
-              file.extname contains 'Ppt' or
-              file.extname contains 'xls' or
-              file.extname contains 'XLS' or
-              file.extname contains 'Xls' %}
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>{{file.basename}}</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="{{ file.path }}">{{ file.path }}</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              {% endif %}
-              {% endfor %}
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt webdesign">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Womens Stone" src="images/grids/img2.png"></div>
-                    <div class="itemInfo">
-                      <h4>Double Diamant</h4>
-                      <h6>Méthode</h6>
-                      <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam suscipit ipsum eget est commodo, quis pellentesque nisi blandit. Proin vitae felis ac est viverra faucibus vel eu nisl.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt creative">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Elves Past" src="images/grids/img3.png"></div>
-                    <div class="itemInfo">
-                      <h4>LiveTweet</h4>
-                      <h6>Méthode</h6>
-                      <p>Cras et adipiscing nulla, ut pulvinar lectus. Duis facilisis vulputate sapien sed pretium. Vivamus imperdiet purus nec vestibulum venenatis. Maecenas ultricies velit eget dui viverra, vitae iaculis lorem dignissim.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt inspiration">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Silken Wife" src="images/grids/img4.png"></div>
-                    <div class="itemInfo">
-                      <h4>Partenariat d'Innovation</h4>
-                      <h6>Exemple concret</h6>
-                      <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In pharetra lorem non libero eleifend varius. Ut vel augue purus. Sed auctor accumsan nulla, eget imperdiet sapien tincidunt quis.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt webdesign">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Some Vision" src="images/grids/img5.png"></div>
-                    <div class="itemInfo">
-                      <h4>Brainstorming</h4>
-                      <h6>Modèle de document</h6>
-                      <p>Donec rutrum, magna a aliquam suscipit, nisl urna vehicula neque, vel feugiat nunc mi non velit. Vivamus id varius turpis. Nam vitae tortor vitae magna malesuada congue. </p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt inspiration">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Snow Woman" src="images/grids/img6.png"></div>
-                    <div class="itemInfo">
-                      <h4>Sourçage innovant</h4>
-                      <h6>Exemple concret</h6>
-                      <p>Vivamus justo nisi, ornare id lobortis non, cursus in enim. Quisque semper dui vitae tempor dictum. Duis nec luctus est, eget dictum ipsum. Pellentesque ultrices posuere metus sit amet volutpat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Mist Witches" src="images/grids/img7.png"></div>
-                    <div class="itemInfo">
-                      <h4>Charte Atelier Idéation</h4>
-                      <h6>Modèle de document</h6>
-                      <p>Nulla sagittis mi ante. Mauris a nunc id sapien iaculis sodales vel a turpis. Proin a velit fermentum, rutrum enim sed, venenatis diam. Nunc commodo lorem quis sagittis luctus. Praesent faucibus fermentum eros at lacinia.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt creative">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Wind of Worlds" src="images/grids/img8.png"></div>
-                    <div class="itemInfo">
-                      <h4>Storify</h4>
-                      <h6>Exemple concret</h6>
-                      <p>Sed tellus risus, mollis sit amet ultrices vel, fermentum porttitor felis. Morbi porta placerat facilisis. Ut pretium, nunc et luctus bibendum, nulla ipsum malesuada justo, sit amet adipiscing nunc nulla et magna.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-            </div>
-            <div class="loadit"><button type="button" class="btn btn-primary">Load More</button></div>
-          </div>
-        </div>
+        {% include widgets/ressources.html max="8" filter="all" %}
       </div>
     </div>
   </div>

@@ -189,6 +189,10 @@ img {
 }
 
 /* section 1 */
+.homepage-ressources .ressources-search {
+  display: none;
+}
+
 .section1,
 .section2,
 .section3,
@@ -436,23 +440,21 @@ img {
 	list-style-type: none;
 	display: inline-block;
   padding: 10px 20px;
-  border-radius: 4px;
   cursor: pointer;
-  color: #00ACE9;
+  color: rgb(180, 182, 184);
   -webkit-transition:background-color 0.3s ease-in;  
     -moz-transition:background-color 0.3s ease-in;  
     -o-transition:background-color 0.3s ease-in;  
     transition:background-color 0.3s ease-in;
 }
 .menuSwitch ul li:hover {
-	background-color: #00ACE9;
-	color: white;
+  border-bottom: 3px solid;
 }
 
 .menuSwitch ul li.cat-active {
-  background-color: #00ACE9;
-  color: white;
+  border-bottom: 3px solid #00ACE9;
 }
+
 
 .imgSwitch {
 
@@ -460,7 +462,7 @@ img {
 
 .dbox {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   -webkit-transition: all 0.2s ease-in-out;
   -webkit-transition-delay: 0s;
   -moz-transition: all 0.2s ease-in-out 0s;
@@ -482,22 +484,160 @@ img {
   display: none;
 }
 .itemCont {
-  overflow: hidden;
+//  overflow: hidden;
 }
 .itemInfo {
   display: block;
 }
-.itemInfo p {
-  display: none;
-}
-.thumb img {
-  text-align: center;
-}
+
 .loadit {
   text-align: center;
 }
 
+.applegreen { background-color: #B4D200!important;}
+.black { background-color: #7C7C7B!important; }
+.lightorange { background-color: #FACD23!important; }
+.blue { background-color: #73D7FF!important; }
+.lightgreen { background-color: #BEF09B!important; }
+.darkpurple { background-color: #8C00C8!important; }
+.yellow { background-color: #FFF000!important; }
+.greenblue { background-color: #9BE6E6!important; }
+.lightbrown { background-color: #DCCDB4!important; }
+.purple { background-color: #E1B4FA!important; }
+
+.applegreen-font { color: #B4D200!important;}
+.black-font { color: #7C7C7B!important; }
+.lightorange-font { color: #FACD23!important; }
+.blue-font { color: #73D7FF!important; }
+.lightgreen-font { color: #BEF09B!important; }
+.darkpurple-font { color: #8C00C8!important; }
+.yellow-font { color: #FFF000!important; }
+.greenblue-font { color: #9BE6E6!important; }
+.lightbrown-font { color: #DCCDB4!important; }
+.purple-font { color: #E1B4FA!important; }
+
+.applegreen-border { border-color: #B4D200!important;}
+.black-border { border-color: #7C7C7B!important; }
+.lightorange-border { border-color: #FACD23!important; }
+.blue-border { border-color: #73D7FF!important; }
+.lightgreen-border { border-color: #BEF09B!important; }
+.darkpurple-border { border-color: #8C00C8!important; }
+.yellow-border { border-color: #FFF000!important; }
+.greenblue-border { border-color: #9BE6E6!important; }
+.lightbrown-border { border-color: #DCCDB4!important; }
+.purple-border { border-color: #E1B4FA!important; }
+
+
+
+/* Thumbs */
+.document-item {
+  width: 100%;
+  padding: 0;
+}
+
+.document-item .itemCont {
+  display: block;
+}
+
+.thumb-container {
+  background-color: rgb(247, 245, 242);
+  padding: 8px;
+}
+
+.thumb {
+  text-align: center;
+  padding: 4px;
+  text-transform: uppercase;
+}
+
+.thumb-upper {
+  background: white;
+  padding: 15%;
+}
+
+.thumb-upper .thumb-primary {
+  color: rgb(180, 182, 184);
+  font-size: 0.7em;
+  margin-top: 13px;
+}
+
+.category-separator {
+  width: 50%;
+  display: block;
+  margin: 7px auto;
+  text-align: center;
+  height: 1px;
+  background-color: rgb(180, 182, 184);
+}
+
+.thumb-upper .document-name {
+  font-size: 1.2em;
+  word-wrap: break-word;
+}
+
+.thumb-lower {
+  min-height: 30px;
+  padding-top: 7px;
+  color: white;
+  vertical-align: middle;
+}
+
+.thumb img {
+  max-width: 40%;
+}
+
 /* switch mode */
+.itemInfo {
+  display: none;
+}
+
+.row-list {
+  display: block;
+}
+
+.row-list .itemCont {
+  text-align: left;
+}
+
+.row-list .itemCont > a {
+  float: left;
+  padding: 10px;
+  color: #777;
+  width: 100%;
+}
+.row-list .itemCont > a:hover {
+  background-color: #f3f3f3;
+  color: inherit;
+}
+.row-list .itemCont > a:hover .thumb-primary {
+  color: black;
+}
+
+
+
+.row-list .itemCont .thumb-container {
+  float: left;
+  display: inline-block;
+  width: 20%;
+  max-width: 20%;
+  background: transparent;
+  padding: 0;
+}
+
+.row-list .itemInfo {
+  float: left;
+  display: inline-block;
+  max-width: 75%;
+  margin-left: 4%;
+}
+
+.row-list .itemInfo p {
+  display: block;
+}
+.row-list .itemCont .goto {
+  display: block;
+}
+
 .dbox-list {
   width: 100%;
   height: auto;
@@ -945,3 +1085,4 @@ and (max-device-width : 1024px) {
 	#slider-control-nav { opacity: 1; }
 
 }
+

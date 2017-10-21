@@ -18,6 +18,7 @@
     <link href="css/circle.css" rel="stylesheet">
     <link href="css/jquery.bxslider.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/nivo-slider.css">
+    <link href="css/apie-viewer.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,600' rel='stylesheet' type='text/css'>
     <script src="js/vendor/modernizr.custom.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -174,15 +175,14 @@ retex hackathon ccommons : <a href ="/files/3.cas-d-usages/documentation/retex h
 <!-- Load react and node dependencies -->
 <script type="text/javascript" src="/assets/javascript/bundle.js" charset="utf-8"></script>
 
-    <script src="js/lib/github.js"></script>
-
     <script type="text/javascript">
  $.fn.cycle.defaults.autoSelector = '.slideshow';
  $(function(){
    var default_view = 'grid';
    if($.cookie('view') !== 'undefined'){
      $.cookie('view', default_view, { expires: 7, path: '/' });
-   } 
+   }
+   /*
    function get_grid(){
      $('.list').removeClass('list-active');
      $('.grid').addClass('grid-active');
@@ -231,7 +231,7 @@ retex hackathon ccommons : <a href ="/files/3.cas-d-usages/documentation/retex h
      get_grid();
    });
 
-   /* filter */
+    filter 
    $('.menuSwitch ul li').click(function(){
      var CategoryID = $(this).attr('category');
      $('.menuSwitch ul li').removeClass('cat-active');
@@ -243,7 +243,7 @@ retex hackathon ccommons : <a href ="/files/3.cas-d-usages/documentation/retex h
        };
      });
      $('.'+CategoryID).fadeIn(); 
-   });
+   });*/
  });
 </script>
 

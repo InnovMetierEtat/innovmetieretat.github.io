@@ -18,6 +18,7 @@
     <link href="css/circle.css" rel="stylesheet">
     <link href="css/jquery.bxslider.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/nivo-slider.css">
+    <link href="css/apie-viewer.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,600' rel='stylesheet' type='text/css'>
     <script src="js/vendor/modernizr.custom.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -87,7 +88,12 @@
       <div class="col-md-12">
         <div class="secHeader">
           <h1 class="text-center">Kit de l'Innovation Métier</h1>
-          <p class="text-center"><small>Afin de permettre aux agents publics de disposer de ressources pour les accompagner sur le chemin de l'innovation, l’idée à germée de partager, mettre en commun des connaissances, des outils, et/ou des ressources issues des administrations. Cette idée initiale s'est progressivement cristallisée sous la forme d'un Kit de l'innovation métier de l'État. L’objectif est de partager trois types de connaissances pertinentes pour des innovateurs publics. </small><form><input type="search" class="form-control" id="search-engine" placeholder="Rechercher..."></form></p>
+          <p class="text-center"><small>Afin de permettre aux agents publics de disposer de ressources pour les accompagner sur le chemin de l'innovation, l’idée à germée de partager, mettre en commun des connaissances, des outils, et/ou des ressources issues des administrations. Cette idée initiale s'est progressivement cristallisée sous la forme d'un Kit de l'innovation métier de l'État. L’objectif est de partager trois types de connaissances pertinentes pour des innovateurs publics. </small>
+            <form method="GET" action="/search.html">
+              <input type="text" name="search" class="form-control" id="search-engine" placeholder="Organiser un barcamp">
+              <button class="btn btn-primary">Rechercher</button>
+            </form>
+          </p>
         </div>
         <div class="row">
           <div class="col-xs-6 col-sm-6 col-md-3">
@@ -218,7 +224,7 @@
   </div>
 </div> <!-- e/o section1 -->
 
-<div id="templatemo_portfolio" class="section2">
+<div id="templatemo_portfolio" class="section2 homepage-ressources">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -226,551 +232,14 @@
           <h1 class="text-center">Ressources</h1>
           <p class="text-center"><small>Ces connaissances sont classées de différentes façons afin de permettre aux innovateurs de trouver l'information qu'ils souhaitent le plus rapidement possible. Le kit de l'innovation métier est proposé sous format libre, que ce soit les contenus du Kit mais également le support digital disponible sur Github, qui peut donc être réutilisé librement. Les contenus sont fournis par l'ensemble des innovateurs publics qui partagent leurs ressources de cette façon.'</small></p>
         </div>
-        <div class="glView">
-          <div class="switcher">
-            <ul>
-              <li id="grid" class="grid"><i class="fa fa-th-large"></i></li>
-              <li id="list" class="list"><i class="fa fa-align-justify"></i></li>
-            </ul>
-          </div>
-          <div class="menuSwitch">
-            <ul>
-              <li class="cat-active" category="prod-cnt">Toutes</li>
-              <li class="creativite" category="webdesign">Créativité</li>
-              <li class="juridique" category="graphic">Juridique</li>
-              <li class="marches" category="inspiration">Marchés publics</li>
-              <li class="documentation" category="creative">Documentation</li>
-              <li class="parangonnage" category="webdesign">Parangonnage</li>
-              <li class="technologies" category="graphic">Technologies</li>
-              <li class="communication" category="inspiration">Communication</li>
-              <li class="lieux" category="creative">Lieux et Evénements</li>
-              <li class="inventions" category="webdesign">Inventions</li>
-              <li class="autres" category="graphic">Autres</li>
-            </ul>
-          </div>
+        
 
-          <div id="ressources-widget" react-element="true"></div>
 
-          
-          <div class="imgSwitch items-container">
-            <div class="row">
-              
-              
-              
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>DD</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/1.méthodes/créativité/DD.pdf">/files/1.méthodes/créativité/DD.pdf</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>MDD</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/1.méthodes/créativité/MDD.odp">/files/1.méthodes/créativité/MDD.odp</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>fiche_organiser_un_barcamp_0</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/1.méthodes/créativité/fiche_organiser_un_barcamp_0.pdf">/files/1.méthodes/créativité/fiche_organiser_un_barcamp_0.pdf</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>Licences_libres-Creative_Commons</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/1.méthodes/juridique/Licences_libres-Creative_Commons.pdf">/files/1.méthodes/juridique/Licences_libres-Creative_Commons.pdf</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>Partenariat d'Innovation & PI</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/1.méthodes/juridique/Partenariat d'Innovation & PI.pdf">/files/1.méthodes/juridique/Partenariat d'Innovation & PI.pdf</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>Partenariat d'Innovation & PI</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/1.méthodes/marchés publics/Partenariat d'Innovation & PI.pdf">/files/1.méthodes/marchés publics/Partenariat d'Innovation & PI.pdf</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>Grille d'analyse SWOT</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/2.modèles/autres/Grille d'analyse SWOT.odp">/files/2.modèles/autres/Grille d'analyse SWOT.odp</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>Grille d'analyse SWOT</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/2.modèles/autres/Grille d'analyse SWOT.pdf">/files/2.modèles/autres/Grille d'analyse SWOT.pdf</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>Grille d'analyse SWOT</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/2.modèles/autres/Grille d'analyse SWOT.pptx">/files/2.modèles/autres/Grille d'analyse SWOT.pptx</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>swot</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/2.modèles/créativité/swot.png">/files/2.modèles/créativité/swot.png</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>STORY CANVAS</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/2.modèles/documentation/STORY CANVAS.odp">/files/2.modèles/documentation/STORY CANVAS.odp</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>STORY CANVAS</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/2.modèles/documentation/STORY CANVAS.pdf">/files/2.modèles/documentation/STORY CANVAS.pdf</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>STORY CANVAS</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/2.modèles/documentation/STORY CANVAS.pptx">/files/2.modèles/documentation/STORY CANVAS.pptx</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>Social Business Model Canvas - mySBM.org</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/2.modèles/documentation/Social Business Model Canvas - mySBM.org.pdf">/files/2.modèles/documentation/Social Business Model Canvas - mySBM.org.pdf</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>Social Business Model Canvas - mySBM.org</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/2.modèles/documentation/Social Business Model Canvas - mySBM.org.pptx">/files/2.modèles/documentation/Social Business Model Canvas - mySBM.org.pptx</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>Charte de Participation Atelier d'Idéation</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/2.modèles/juridique/Charte de Participation Atelier d'Idéation.odt">/files/2.modèles/juridique/Charte de Participation Atelier d'Idéation.odt</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>Charte de Participation Atelier d'Idéation</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/2.modèles/juridique/Charte de Participation Atelier d'Idéation.pdf">/files/2.modèles/juridique/Charte de Participation Atelier d'Idéation.pdf</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>Storify</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/3.cas-d-usages/documentation/Storify.pdf">/files/3.cas-d-usages/documentation/Storify.pdf</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb">
-                      <img class="img-responsive center-block" alt="Blue Gate" src="images/grids/img1.png">
-                    </div>
-                    <div class="itemInfo">
-                      <h4>retex hackathon ccommons</h4>
-                      <h6>Modéle de document</h6>
-                      <a href ="/files/3.cas-d-usages/documentation/retex hackathon ccommons.pdf">/files/3.cas-d-usages/documentation/retex hackathon ccommons.pdf</a>
-                      <p>Etiam faucibus id orci et mollis. Donec at ultricies erat. Sed sodales dapibus felis vehicula tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam id eros ac elit blandit vestibulum sed non erat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt webdesign">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Womens Stone" src="images/grids/img2.png"></div>
-                    <div class="itemInfo">
-                      <h4>Double Diamant</h4>
-                      <h6>Méthode</h6>
-                      <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam suscipit ipsum eget est commodo, quis pellentesque nisi blandit. Proin vitae felis ac est viverra faucibus vel eu nisl.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt creative">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Elves Past" src="images/grids/img3.png"></div>
-                    <div class="itemInfo">
-                      <h4>LiveTweet</h4>
-                      <h6>Méthode</h6>
-                      <p>Cras et adipiscing nulla, ut pulvinar lectus. Duis facilisis vulputate sapien sed pretium. Vivamus imperdiet purus nec vestibulum venenatis. Maecenas ultricies velit eget dui viverra, vitae iaculis lorem dignissim.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt inspiration">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Silken Wife" src="images/grids/img4.png"></div>
-                    <div class="itemInfo">
-                      <h4>Partenariat d'Innovation</h4>
-                      <h6>Exemple concret</h6>
-                      <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In pharetra lorem non libero eleifend varius. Ut vel augue purus. Sed auctor accumsan nulla, eget imperdiet sapien tincidunt quis.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt webdesign">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Some Vision" src="images/grids/img5.png"></div>
-                    <div class="itemInfo">
-                      <h4>Brainstorming</h4>
-                      <h6>Modèle de document</h6>
-                      <p>Donec rutrum, magna a aliquam suscipit, nisl urna vehicula neque, vel feugiat nunc mi non velit. Vivamus id varius turpis. Nam vitae tortor vitae magna malesuada congue. </p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt inspiration">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Snow Woman" src="images/grids/img6.png"></div>
-                    <div class="itemInfo">
-                      <h4>Sourçage innovant</h4>
-                      <h6>Exemple concret</h6>
-                      <p>Vivamus justo nisi, ornare id lobortis non, cursus in enim. Quisque semper dui vitae tempor dictum. Duis nec luctus est, eget dictum ipsum. Pellentesque ultrices posuere metus sit amet volutpat.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt graphic">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Mist Witches" src="images/grids/img7.png"></div>
-                    <div class="itemInfo">
-                      <h4>Charte Atelier Idéation</h4>
-                      <h6>Modèle de document</h6>
-                      <p>Nulla sagittis mi ante. Mauris a nunc id sapien iaculis sodales vel a turpis. Proin a velit fermentum, rutrum enim sed, venenatis diam. Nunc commodo lorem quis sagittis luctus. Praesent faucibus fermentum eros at lacinia.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-3 col-md-3 dbox prod-cnt creative">
-                <div class="itemCont">
-                  <a href="#">
-                    <div class="thumb"><img class="img-responsive center-block" alt="Wind of Worlds" src="images/grids/img8.png"></div>
-                    <div class="itemInfo">
-                      <h4>Storify</h4>
-                      <h6>Exemple concret</h6>
-                      <p>Sed tellus risus, mollis sit amet ultrices vel, fermentum porttitor felis. Morbi porta placerat facilisis. Ut pretium, nunc et luctus bibendum, nulla ipsum malesuada justo, sit amet adipiscing nunc nulla et magna.</p>
-                    </div>
-                  </a>
-                  <button type="button" class="btn btn-primary goto">view</button>
-                </div>
-              </div>
-            </div>
-            <div class="loadit"><button type="button" class="btn btn-primary">Load More</button></div>
-          </div>
-        </div>
+<div id="ressources-widget" react-element="true" data-max="8" data-fullsearch="">
+  <script data-set="true">[{"name":"README.md","path":"/files/1.méthodes/autres/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"README.md","path":"/files/1.méthodes/communication/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"DD.pdf","path":"/files/1.méthodes/créativité/DD.pdf","basename":"DD","extname":".pdf","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"MDD.odp","path":"/files/1.méthodes/créativité/MDD.odp","basename":"MDD","extname":".odp","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"README.md","path":"/files/1.méthodes/créativité/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"fiche_organiser_un_barcamp_0.pdf","path":"/files/1.méthodes/créativité/fiche_organiser_un_barcamp_0.pdf","basename":"fiche_organiser_un_barcamp_0","extname":".pdf","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"README.md","path":"/files/1.méthodes/documentation/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"README.md","path":"/files/1.méthodes/inventions/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"Licences_libres-Creative_Commons.pdf","path":"/files/1.méthodes/juridique/Licences_libres-Creative_Commons.pdf","basename":"Licences_libres-Creative_Commons","extname":".pdf","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"Partenariat d'Innovation & PI.pdf","path":"/files/1.méthodes/juridique/Partenariat d'Innovation & PI.pdf","basename":"Partenariat d'Innovation & PI","extname":".pdf","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"README.md","path":"/files/1.méthodes/juridique/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"README.md","path":"/files/1.méthodes/lieux et événements/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"Partenariat d'Innovation & PI.pdf","path":"/files/1.méthodes/marchés publics/Partenariat d'Innovation & PI.pdf","basename":"Partenariat d'Innovation & PI","extname":".pdf","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"README.md","path":"/files/1.méthodes/marchés publics/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"README.md","path":"/files/1.méthodes/parangonnage/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"README.md","path":"/files/1.méthodes/technologie/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"methodes":true},{"name":"Grille d'analyse SWOT.odp","path":"/files/2.modèles/autres/Grille d'analyse SWOT.odp","basename":"Grille d'analyse SWOT","extname":".odp","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"Grille d'analyse SWOT.pdf","path":"/files/2.modèles/autres/Grille d'analyse SWOT.pdf","basename":"Grille d'analyse SWOT","extname":".pdf","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"Grille d'analyse SWOT.pptx","path":"/files/2.modèles/autres/Grille d'analyse SWOT.pptx","basename":"Grille d'analyse SWOT","extname":".pptx","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"README.md","path":"/files/2.modèles/autres/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"README.md","path":"/files/2.modèles/communication/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"README.md","path":"/files/2.modèles/créativité/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"swot.png","path":"/files/2.modèles/créativité/swot.png","basename":"swot","extname":".png","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"README.md","path":"/files/2.modèles/documentation/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"STORY CANVAS.odp","path":"/files/2.modèles/documentation/STORY CANVAS.odp","basename":"STORY CANVAS","extname":".odp","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"STORY CANVAS.pdf","path":"/files/2.modèles/documentation/STORY CANVAS.pdf","basename":"STORY CANVAS","extname":".pdf","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"STORY CANVAS.pptx","path":"/files/2.modèles/documentation/STORY CANVAS.pptx","basename":"STORY CANVAS","extname":".pptx","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"Social Business Model Canvas - mySBM.org.pdf","path":"/files/2.modèles/documentation/Social Business Model Canvas - mySBM.org.pdf","basename":"Social Business Model Canvas - mySBM.org","extname":".pdf","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"Social Business Model Canvas - mySBM.org.pptx","path":"/files/2.modèles/documentation/Social Business Model Canvas - mySBM.org.pptx","basename":"Social Business Model Canvas - mySBM.org","extname":".pptx","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"README.md","path":"/files/2.modèles/inventions/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"Charte de Participation Atelier d'Idéation.odt","path":"/files/2.modèles/juridique/Charte de Participation Atelier d'Idéation.odt","basename":"Charte de Participation Atelier d'Idéation","extname":".odt","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"Charte de Participation Atelier d'Idéation.pdf","path":"/files/2.modèles/juridique/Charte de Participation Atelier d'Idéation.pdf","basename":"Charte de Participation Atelier d'Idéation","extname":".pdf","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"README.md","path":"/files/2.modèles/juridique/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"README.md","path":"/files/2.modèles/lieux et événements/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"README.md","path":"/files/2.modèles/marchés publics/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"README.md","path":"/files/2.modèles/parangonnage/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"README.md","path":"/files/2.modèles/technologie/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"modeles":true},{"name":"README.md","path":"/files/3.cas-d-usages/autres/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true},{"name":"README.md","path":"/files/3.cas-d-usages/communication/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true},{"name":"README.md","path":"/files/3.cas-d-usages/créativité/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true},{"name":"README.md","path":"/files/3.cas-d-usages/documentation/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true},{"name":"Storify.pdf","path":"/files/3.cas-d-usages/documentation/Storify.pdf","basename":"Storify","extname":".pdf","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true},{"name":"retex hackathon ccommons.pdf","path":"/files/3.cas-d-usages/documentation/retex hackathon ccommons.pdf","basename":"retex hackathon ccommons","extname":".pdf","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true},{"name":"README.md","path":"/files/3.cas-d-usages/inventions/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true},{"name":"README.md","path":"/files/3.cas-d-usages/juridique/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true},{"name":"README.md","path":"/files/3.cas-d-usages/lieux et événements/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true},{"name":"README.md","path":"/files/3.cas-d-usages/marchés publics/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true},{"name":"README.md","path":"/files/3.cas-d-usages/parangonnage/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true},{"name":"README.md","path":"/files/3.cas-d-usages/technologie/README.md","basename":"README","extname":".md","collection":null,"modified_time":"2017-10-16 11:12:45 +0200","parse":true,"casdusages":true}]</script>
+</div>
+
+
       </div>
     </div>
   </div>
@@ -977,15 +446,14 @@
 <!-- Load react and node dependencies -->
 <script type="text/javascript" src="/assets/javascript/bundle.js" charset="utf-8"></script>
 
-    <script src="js/lib/github.js"></script>
-
     <script type="text/javascript">
  $.fn.cycle.defaults.autoSelector = '.slideshow';
  $(function(){
    var default_view = 'grid';
    if($.cookie('view') !== 'undefined'){
      $.cookie('view', default_view, { expires: 7, path: '/' });
-   } 
+   }
+   /*
    function get_grid(){
      $('.list').removeClass('list-active');
      $('.grid').addClass('grid-active');
@@ -1034,7 +502,7 @@
      get_grid();
    });
 
-   /* filter */
+    filter 
    $('.menuSwitch ul li').click(function(){
      var CategoryID = $(this).attr('category');
      $('.menuSwitch ul li').removeClass('cat-active');
@@ -1046,7 +514,7 @@
        };
      });
      $('.'+CategoryID).fadeIn(); 
-   });
+   });*/
  });
 </script>
 
