@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import GithubRepo from '../lib/github.js';
 import CategoriesConfig from "../config/categories.js";
+import swal from 'sweetalert2';
+
 
 class ViewerWidget extends Component {
   constructor(props) {
@@ -8,7 +10,17 @@ class ViewerWidget extends Component {
 
     // Extract params from URL
     var search = location.search.substring(1);
-    var params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+    if (!_.isEmpty(search)) {
+      var params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+    } else {
+      swal({
+        title: 'Il y a un problème !',
+        text: "Vous essayez de voir un document qui n'existe pas.",
+        type: 'error',
+        confirmButtonText: 'Revenir à la page précédente'
+      }).then(() => window.history.back());
+    } 
+
 
     // Get the path
     var path = params.document;

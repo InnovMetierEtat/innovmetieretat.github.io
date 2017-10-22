@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <title>Kit de l'Innovation Métier - Map</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo_style.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,600' rel='stylesheet' type='text/css'>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            <nav class="mainMenu">
+              <ul class="nav">
+                <li><a href="/#templatemo_top">Accueil</a></li>
+                <li><a href="/#templatemo_services">Kit</a></li>
+                <li><a href="/#templatemo_portfolio">Ressources</a></li>
+                <li><a href="/#templatemo_about">Innovateurs</a></li>
+                <li><a href="/#templatemo_contact">Cartographie</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="mapdiv" style="width: 100%; height: initial;"></div>
+
+<script src="https://openlayers.org/api/OpenLayers.js"></script>
+<script>
+ var coordinates = {
+   center: { lat: -0.1279688, lng: 51.5077286 },
+   markers: [
+     {
+       lat: -0.1279688,
+       lng: 51.5077286,
+       description: '',
+       color: 'applegreen',
+       icon: 'idea'
+     },
+     {
+       lat: -0.1244324,
+       lng: 51.5006728,
+       description: '',
+       color: 'orange',
+       icon: 'model'
+     },
+     {
+       lat: -0.119623, 
+       lng: 51.503308,
+       description: '',
+       color: 'purple',
+       icon: 'usecase'
+     },
+   ]
+ }
+
+ map = new OpenLayers.Map("mapdiv");
+ map.addLayer(new OpenLayers.Layer.OSM());
+
+ epsg4326 =  new OpenLayers.Projection("EPSG:4326"); //WGS 1984 projection
+ projectTo = map.getProjectionObject(); //The map projection (Spherical Mercator)
+
+ var lonLat = new OpenLayers.LonLat( coordinates.center.lat, coordinates.center.lng ).transform(epsg4326, projectTo);
+
+
+ var zoom=14;
+ map.setCenter (lonLat, zoom);
+
+ var vectorLayer = new OpenLayers.Layer.Vector("Overlay");
+
+ coordinates.markers.forEach(function(marker) {
+   var feature = new OpenLayers.Feature.Vector(
+     new OpenLayers.Geometry.Point( marker.lat, marker.lng  ).transform(epsg4326, projectTo),
+     {description: marker.description} ,
+     {externalGraphic: 'assets/images/pictos/picto-' + marker.icon + '-' + marker.color + '.png', graphicHeight: 35, graphicWidth: 35, graphicXOffset:-12, graphicYOffset:-25  }
+   );    
+   vectorLayer.addFeatures(feature);
+ });
+ // Define markers as "features" of the vector layer:
+
+
+ map.addLayer(vectorLayer);
+
+
+ //Add a selector control to the vectorLayer with popup functions
+ var controls = {
+   selector: new OpenLayers.Control.SelectFeature(vectorLayer, { onSelect: createPopup, onUnselect: destroyPopup })
+ };
+
+ function createPopup(feature) {
+   feature.popup = new OpenLayers.Popup.FramedCloud("pop",
+                                                    feature.geometry.getBounds().getCenterLonLat(),
+                                                    null,
+                                                    '<div class="markerContent">'+feature.attributes.description+'</div>',
+                                                    null,
+                                                    true,
+                                                    function() { controls['selector'].unselectAll(); }
+   );
+   //feature.popup.closeOnMove = true;
+   map.addPopup(feature.popup);
+ }
+
+ function destroyPopup(feature) {
+   feature.popup.destroy();
+   feature.popup = null;
+ }
+
+// map.addControl(controls['selector']);
+// controls['selector'].activate();
+
+</script>
+
+
+  </body>
+</html>

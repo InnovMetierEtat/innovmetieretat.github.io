@@ -50,9 +50,10 @@ class RessourcesWidget extends Component {
     if (this.state.fullsearch) {
       // URL Params
       var search = location.search.substring(1);
-      var params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-
-      this.setState({ search_filter: params.search });
+      if (!_.isEmpty(search)) {
+        var params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+        this.setState({ search_filter: params.search });
+      }
     }
 
     // Fetch more data from github API
@@ -143,7 +144,7 @@ class RessourcesWidget extends Component {
           <div className="row row-list" ref="container">
             {this.documentsList()}
           </div>
-          <div className="loadit"><button type="button" className="btn btn-primary">Load More</button></div>
+          {this.state.fullsearch ? '' : <div className="loadit"><a href="/search.html" className="btn btn-primary">Afficher tout</a></div>}
         </div>
       );
     } else { // Grid mode
@@ -154,22 +155,21 @@ class RessourcesWidget extends Component {
               {this.documentsList()}
             </StackGrid>
           </div>
-          <div className="loadit"><button type="button" className="btn btn-primary">Load More</button></div>
+          {this.state.fullsearch ? '' : <div className="loadit"><a href="/search.html" className="btn btn-primary">Afficher tout</a></div>}
         </div>
       );
     }
 
     return (
       <div className="glView">
-        <div className="ressources-search">
-          <input type="text" ref="search" onChange={this.filterByName} onKeyPress={this.filterByName} className="search-bar" value={this.state.search_filter || ''} />
-        </div>
-
         <div className="switcher">
           <ul>
             <li id="grid" onClick={this.gridToggle} className={`grid ${!this.state.list_mode ? 'grid-active' : ''}`}><i className="fa fa-th-large"></i></li>
             <li id="list" onClick={this.listToggle} className={`list ${this.state.list_mode ? 'list-active' : ''}`}><i className="fa fa-align-justify"></i></li>
           </ul>
+        </div>
+        <div className="ressources-search">
+          <input type="text" ref="search" onChange={this.filterByName} onKeyPress={this.filterByName} className="search-bar form-control" value={this.state.search_filter || ''} placeholder="Organiser un barcamp, ..."/>
         </div>
         <div className={`menuSwitch ${this.state.fullsearch ? 'hide' : ''}`}>
           <ul>
@@ -178,52 +178,52 @@ class RessourcesWidget extends Component {
                 data-category="prod-cnt">
               Toutes
             </li>
-            <li className={`${CategoriesConfig.COLORS['creativite']}-border ${this.isSelectedClass('creativite')}`}
+            <li className={`${CategoriesConfig.COLORS['creativite']}-border ${CategoriesConfig.COLORS['creativite']}-bg-hover ${this.isSelectedClass('creativite')}`}
                 onClick={this.categorySelect}
                 data-category="creativite">
               Créativité
             </li>
-            <li className={`${CategoriesConfig.COLORS['juridique']}-border ${this.isSelectedClass('juridique')}`}
+            <li className={`${CategoriesConfig.COLORS['juridique']}-border ${CategoriesConfig.COLORS['juridique']}-bg-hover ${this.isSelectedClass('juridique')}`}
                 onClick={this.categorySelect}
                 data-category="juridique">
               Juridique
             </li>
-            <li className={`${CategoriesConfig.COLORS['marches']}-border ${this.isSelectedClass('marches')}`}
+            <li className={`${CategoriesConfig.COLORS['marches']}-border ${CategoriesConfig.COLORS['marches']}-bg-hover ${this.isSelectedClass('marches')}`}
                 onClick={this.categorySelect}
                 data-category="marches">
               Marchés publics
             </li>
-            <li className={`${CategoriesConfig.COLORS['documentation']}-border ${this.isSelectedClass('documentation')}`}
+            <li className={`${CategoriesConfig.COLORS['documentation']}-border ${CategoriesConfig.COLORS['documentation']}-bg-hover ${this.isSelectedClass('documentation')}`}
                 onClick={this.categorySelect}
                 data-category="documentation">
               Documentation
             </li>
-            <li className={`${CategoriesConfig.COLORS['parangonnage']}-border ${this.isSelectedClass('parangonnage')}`}
+            <li className={`${CategoriesConfig.COLORS['parangonnage']}-border ${CategoriesConfig.COLORS['parangonnage']}-bg-hover ${this.isSelectedClass('parangonnage')}`}
                 onClick={this.categorySelect}
                 data-category="parangonnage">
               Parangonnage
             </li>
-            <li className={`${CategoriesConfig.COLORS['technologies']}-border ${this.isSelectedClass('technologies')}`}
+            <li className={`${CategoriesConfig.COLORS['technologies']}-border ${CategoriesConfig.COLORS['technologies']}-bg-hover ${this.isSelectedClass('technologies')}`}
                 onClick={this.categorySelect}
                 data-category="technologies">
               Technologies
             </li>
-            <li className={`${CategoriesConfig.COLORS['communication']}-border ${this.isSelectedClass('communication')}`}
+            <li className={`${CategoriesConfig.COLORS['communication']}-border ${CategoriesConfig.COLORS['communication']}-bg-hover ${this.isSelectedClass('communication')}`}
                 onClick={this.categorySelect}
                 data-category="communication">
               Communication
             </li>
-            <li className={`${CategoriesConfig.COLORS['lieux']}-border ${this.isSelectedClass('lieux')}`}
+            <li className={`${CategoriesConfig.COLORS['lieux']}-border ${CategoriesConfig.COLORS['lieux']}-bg-hover ${this.isSelectedClass('lieux')}`}
                 onClick={this.categorySelect}
                 data-category="lieux">
               Lieux et Evénements
             </li>
-            <li className={`${CategoriesConfig.COLORS['inventions']}-border ${this.isSelectedClass('inventions')}`}
+            <li className={`${CategoriesConfig.COLORS['inventions']}-border ${CategoriesConfig.COLORS['inventions']}-bg-hover ${this.isSelectedClass('inventions')}`}
                 onClick={this.categorySelect}
                 data-category="inventions">
               Inventions
             </li>
-            <li className={`${CategoriesConfig.COLORS['autres']}-border ${this.isSelectedClass('autres')}`}
+            <li className={`${CategoriesConfig.COLORS['autres']}-border ${CategoriesConfig.COLORS['autres']}-bg-hover ${this.isSelectedClass('autres')}`}
                 onClick={this.categorySelect}
                 data-category="autres">
               Autres

@@ -10,7 +10,7 @@ layout: default
         <div class="secHeader">
           <h1 class="text-center">Kit de l'Innovation Métier</h1>
           <p class="text-center"><small>Afin de permettre aux agents publics de disposer de ressources pour les accompagner sur le chemin de l'innovation, l’idée à germée de partager, mettre en commun des connaissances, des outils, et/ou des ressources issues des administrations. Cette idée initiale s'est progressivement cristallisée sous la forme d'un Kit de l'innovation métier de l'État. L’objectif est de partager trois types de connaissances pertinentes pour des innovateurs publics. </small>
-            <form method="GET" action="/search.html">
+            <form class="homesearch" method="GET" action="/search.html">
               <input type="text" name="search" class="form-control" id="search-engine" placeholder="Organiser un barcamp">
               <button class="btn btn-primary">Rechercher</button>
             </form>
@@ -171,13 +171,15 @@ layout: default
         <div class="teamInfo">
           <ul>
             <li>
-              <div class="teamBox">
-                <div class="imgWrp"><img class="img-responsive" alt="François B." src="images/team/m1.png"></div>
-                <div class="tInfo">
-                  <h4 class="text-center">François B</h4>
-                  <h6 class="text-center">DGGN</h6>
+              <a href="/parole-francois.html">
+                <div class="teamBox">
+                  <div class="imgWrp"><img class="img-responsive" alt="François B." src="images/team/m1.png"></div>
+                  <div class="tInfo">
+                    <h4 class="text-center">François B</h4>
+                    <h6 class="text-center">DGGN</h6>
+                  </div>
                 </div>
-              </div>
+              </a>
             </li> 
             <li>
               <div class="teamBox">
@@ -244,7 +246,7 @@ layout: default
       <div class="col-md-12">
         <div class="secHeader">
           <h1 class="text-center">Cartographie de l'Innovation</h1>
-          <p class="text-center"><small>Pellentesque aliquam in risus eu ultrices. Suspendisse id interdum nibh. Etiam vel mattis augue, a vestibulum arcu. Nam rutrum diam dolor, eu vehicula nisl tincidunt non. Fusce tincidunt id justo eu tempor. Phasellus sit amet ante lobortis, mattis sapien id, dictum ipsum. <br/><small><a href="http://www.openstreetmap.org/#map=16/48.8401/2.3776">Voir la carte en grand format</a></small></p>
+          <p class="text-center"><small>Pellentesque aliquam in risus eu ultrices. Suspendisse id interdum nibh. Etiam vel mattis augue, a vestibulum arcu. Nam rutrum diam dolor, eu vehicula nisl tincidunt non. Fusce tincidunt id justo eu tempor. Phasellus sit amet ante lobortis, mattis sapien id, dictum ipsum. <br/><small><a href="/map.html">Voir la carte en grand format</a></small></p>
         </div>
       </div>
     </div>
@@ -255,7 +257,7 @@ layout: default
       <div class="col-md-12">
         <div class="templatemo_maps">
           <div class="fluid-wrapper">
-            <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=2.370707988739014%2C48.838113720695176%2C2.3844408988952637%2C48.84218103700277&amp;layer=mapnik"></iframe> </div>
+            {% include widgets/map.html height="400px" %}
         </div>
       </div>
     </div>
