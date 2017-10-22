@@ -1,6 +1,6 @@
 /* This is just a sample file with CSS rules. You should write your own @font-face declarations
  * to add support for your desired fonts.
- */
+
 
 @font-face {
   font-family: 'Novecentowide Book';
@@ -24,4 +24,14 @@
     font-style: normal;
 
 }
+*/
+#canvasContainer {
+  background: #d0d0d0 !important;
+}
+#titlebar {
+  background: #b3b3b3 !important;
+}
 
+#toolbarContainer {
+  background: #b3b3b3 !important;
+}

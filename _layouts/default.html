@@ -19,6 +19,7 @@
     <link href="css/jquery.bxslider.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/nivo-slider.css">
     <link href="css/apie-viewer.css" rel="stylesheet">
+    <link href="css/page-style.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,600' rel='stylesheet' type='text/css'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.min.css" rel="stylesheet">
     <script src="js/vendor/modernizr.custom.js"></script>
@@ -32,12 +33,13 @@
   <body>
     {% include menu.html %}
 
-    <div class="container">
+
       {{ content }}
     </div>
 
-    {% include footer.html %}
-
+    <div class="wrapper">
+      {% include footer.html %}
+    </div>
     <!-- JS -->
     {% include dependencies.html %}
     {% include view_scripts.html %}

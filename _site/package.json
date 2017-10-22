@@ -22,6 +22,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "moment": "^2.19.1",
     "react": "^15.6.2",
     "react-addons-update": "^15.6.2",
     "react-dom": "^15.6.2",

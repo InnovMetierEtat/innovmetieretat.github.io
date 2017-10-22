@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GithubRepo from '../lib/github.js';
 import CategoriesConfig from "../config/categories.js";
 import swal from 'sweetalert2';
-
+import moment from 'moment';
 
 class ViewerWidget extends Component {
   constructor(props) {
@@ -45,6 +45,8 @@ class ViewerWidget extends Component {
         extension: extension,
         modified_at: null,
         user: {
+          picture: '',
+          url: '#',
           name: "Anonymous",
           email: null
         }
@@ -74,18 +76,33 @@ class ViewerWidget extends Component {
       var message = "Pas de description";
 
       if (!_.isEmpty(commits)) {
-        // take the first commit
-        var commit = _.last(commits).commit;
-        console.log(commit);
-        message = commit.message;
+        // take and remove the first commit
+        //var data = commits.pop();
+        var data = _.last(commits);
 
-        file.modified_at = new Date(commit.author.date);
-        file.user = {
-          name: commit.author.name,
-          email: commit.author.email
+        const extractDataFromCommit = (data, object) => {
+          var commit = data.commit;
+          //console.log(data);
+          object.description = commit.message;
+          object.modified_at = new Date(commit.author.date);
+          object.user = {
+            picture: `https://github.com/${data.author ? data.author.login : ''}.png`, // TODO default image
+            url: data.author ? data.author.html_url : '',
+            name: commit.author ? commit.author.name : "Anonymous",
+            email: commit.author ? commit.author.email : ''
+          };
+          return object;
         };
+
+        // Update the document with data extracted from the first commit
+        file = extractDataFromCommit(data, file);
+
+        // Create document history
+        file.history = _.map(commits, (commit) => extractDataFromCommit(commit, {}));
+
+      } else {
+        file.description = message;
       }
-      file.description = message;
 
       this.setState({ documents: file });  
     });
@@ -99,14 +116,41 @@ class ViewerWidget extends Component {
     var color = CategoriesConfig.COLORS[category];
 
     console.log(document);
+
+    // Make sure it is not null
+    document.history = document.history || [];
+    console.log(document.history);
+    // History of commits
+    const historyList = (
+      <div className="viewer-history">
+        <h3>Historique</h3>
+        <ul className="list-history">
+          {_.map(document.history, (commit, i) => (
+            <li key={i} className="history-item">
+              <div className="history-user">
+                <img src={commit.user.picture} width="50" />
+              </div>
+              <div className="history-description">
+                <a href={commit.user.url}>Par {commit.user.name} le {moment(commit.modified_at).format("DD/MM/YYYY - hh:mm:ss")}</a>
+                {commit.description}
+              </div>
+            </li>
+          ))
+          }
+        </ul>
+      </div>
+    );
+
     return (
       <div>
-        <div className={`viewer-header ${color}-border`}>
+        <div className={`apie-header viewer-header ${color}-border`}>
           <img className="img-responsive center-block" src={`assets/images/pictos/picto-${document.primary_category}-${color}.png`} />
-          <div className="viewer-primary">
+          <div className="viewer-primary page-category">
             {primary_cat}
+            <div className="header-separator"></div>
           </div>
-          <div className={`viewer-document-name ${color}-font`}>
+          <div className={`viewer-document-name page-title ${color}-font`}>
+            {document.name}
           </div>
           <div className={`viewer-category ${color}`}>
             {category}
@@ -117,11 +161,22 @@ class ViewerWidget extends Component {
         </div>
         <div className="viewer-description">
           {document.description}
-          <a href={`/${document.path}`} download>Télécharger</a>
+          <span className="download-container">
+            <a className={`download-link btn ${color}`} href={`/${document.path}`} download>
+              Télécharger
+            </a>
+          </span>
         </div>
         <div className="viewer-user">
-          Created by {document.user.name} on {document.modifier_at}
+          <img src={document.user.picture} width="100"/>
+          <p className="user-content">
+            <h4>Fiche réalisée par {document.user.name}</h4>
+            Créé le {moment(document.modified_at).format("DD/MM/YYYY - hh:mm:ss")}
+          </p>
+          <a className="user-contact btn btn-primary" mailto={document.user.email}>Contacter</a>
+          <a className="user-link btn btn-primary" href={document.user.url}>Voir son profil</a>
         </div>
+        {document.history.length > 0 ? historyList : ''}
       </div>
     );
   }
