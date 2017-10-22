@@ -77,8 +77,7 @@ class ViewerWidget extends Component {
 
       if (!_.isEmpty(commits)) {
         // take and remove the first commit
-        //var data = commits.pop();
-        var data = _.last(commits);
+        var data = commits.pop();
 
         const extractDataFromCommit = (data, object) => {
           var commit = data.commit;
