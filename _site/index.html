@@ -386,7 +386,7 @@
  var lonLat = new OpenLayers.LonLat( coordinates.center.lat, coordinates.center.lng ).transform(epsg4326, projectTo);
 
 
- var zoom=14;
+ var zoom = 14;
  map.setCenter (lonLat, zoom);
 
  var vectorLayer = new OpenLayers.Layer.Vector("Overlay");

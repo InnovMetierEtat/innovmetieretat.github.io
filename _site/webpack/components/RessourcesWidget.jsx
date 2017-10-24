@@ -5,7 +5,7 @@ import GithubRepo from '../lib/github.js';
 import CategoriesConfig from "../config/categories.js";
 
 class RessourcesWidget extends Component {
-  EXTENSIONS_WHITELIST = ['JPG','JPEG', 'PNG', 'PDF', 'ODP', 'ODT', 'ODS', 'DOC', 'PPT', 'XLS'];
+  EXTENSIONS_WHITELIST = ['JPG','JPEG', 'PNG', 'PDF', 'ODP', 'ODT', 'ODS', 'DOC', 'PPTX', 'XLS'];
 
   constructor(props) {
     super(props);

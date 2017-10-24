@@ -23314,7 +23314,7 @@ var RessourcesWidget = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (RessourcesWidget.__proto__ || Object.getPrototypeOf(RessourcesWidget)).call(this, props));
 
-    _this.EXTENSIONS_WHITELIST = ['JPG', 'JPEG', 'PNG', 'PDF', 'ODP', 'ODT', 'ODS', 'DOC', 'PPT', 'XLS'];
+    _this.EXTENSIONS_WHITELIST = ['JPG', 'JPEG', 'PNG', 'PDF', 'ODP', 'ODT', 'ODS', 'DOC', 'PPTX', 'XLS'];
 
     _this.updateDimensions = function () {
       _this.setState({ container_width: $(_this.refs.container).width() });
@@ -30737,6 +30737,12 @@ var ViewerWidget = function (_Component) {
     // Extract params from URL
     var _this = _possibleConstructorReturn(this, (ViewerWidget.__proto__ || Object.getPrototypeOf(ViewerWidget)).call(this, props));
 
+    _this.HANDLED_EXTENSIONS = {
+      viewerjs: ["PDF", "ODT", "ODS", "ODP", "ODG", " ODC", "ODF", "ODB", "ODI", "ODM", "OTT", "OTS", "OTP", "OTG"],
+      microsoft: ["DOCX"],
+      images: ["PNG", "JPG", "JPEG", "GIF"]
+    };
+
     _this.updateDimensions = function () {
       var width = $(_this.refs.viewerContainer).width();
       var height = Math.floor(width * 1.414);
@@ -30794,7 +30800,22 @@ var ViewerWidget = function (_Component) {
 
     var search = location.search.substring(1);
     if (!_.isEmpty(search)) {
-      var params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
+      var params = {};
+      // Extract path separetaly, see below
+      // Extract the rest in the object
+      params = _.assign.apply(_, _.map(search.match(/&(\w+)=(\w+)/g), function (pair) {
+        pair = pair.substring(1);
+        var keyvalue = pair.split("=");
+        var obj = {};
+        obj[keyvalue[0]] = keyvalue[1];
+        return obj;
+      }));
+
+      // Extract path separetaly because it can contain special characters, like & and =
+      var _path = search.replace(search.match(/(&\w+=\w+)+$/ig)[0], '').split("=");
+      _path.shift();
+      _path = _path.join("=");
+      params.document = decodeURI(_path);
     } else {
       (0, _sweetalert2.default)({
         title: 'Il y a un problème !',
@@ -30817,9 +30838,13 @@ var ViewerWidget = function (_Component) {
     // Normalzie name
     var name = basename_split.join(".").split(/-|_/).join(' ');
 
+    var _ext = extension.toUpperCase();
+    // Check which handler is used for this document (viewerjs, microsoftviewer or just regular image)
+    var handler = _.includes(_this.HANDLED_EXTENSIONS['viewerjs'], _ext) && 'viewerjs' || _.includes(_this.HANDLED_EXTENSIONS['microsoft'], _ext) && 'microsoft' || _.includes(_this.HANDLED_EXTENSIONS['images'], _ext) && 'images' || null;
+
     _this.state = (_this$state = {
       containerHeight: 1350
-    }, _defineProperty(_this$state, 'containerHeight', 960), _defineProperty(_this$state, 'document', {
+    }, _defineProperty(_this$state, 'containerHeight', 960), _defineProperty(_this$state, 'handler', handler), _defineProperty(_this$state, 'document', {
       name: name,
       description: null,
       primary_category: params.primary_cat,
@@ -30844,12 +30869,31 @@ var ViewerWidget = function (_Component) {
       var primary_cat = _categories2.default.PRIMARY_DISPLAY[document.primary_category];
       var category = _.last(document.categories);
       var color = _categories2.default.COLORS[category];
-
       console.log(document);
+
+      var viewer = null;
+      if (this.state.handler) {
+        if (this.state.handler == "viewerjs") {
+          viewer = _react2.default.createElement('iframe', { src: '/js/vendor/ViewerJS/#../../../' + document.path, width: this.state.containerWidth, height: this.state.containerHeight, allowFullScreen: true });
+        } else if (this.state.handler == "images") {
+          viewer = _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement('img', { src: document.path })
+          );
+        }
+      } else {
+        viewer = _react2.default.createElement(
+          'div',
+          null,
+          'Ce type de document n\'est pas g\xE9r\xE9 par notre visionneuse.',
+          _react2.default.createElement('br', null),
+          'Vous pouvez cependant consulter le document en le t\xE9l\xE9chargeant directement.'
+        );
+      }
 
       // Make sure it is not null
       document.history = document.history || [];
-      console.log(document.history);
       // History of commits
       var historyList = _react2.default.createElement(
         'div',
@@ -30916,7 +30960,7 @@ var ViewerWidget = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: 'viewer-container', ref: 'viewerContainer' },
-          _react2.default.createElement('iframe', { src: '/js/vendor/ViewerJS/#../../../' + document.path, width: this.state.containerWidth, height: this.state.containerHeight, allowFullScreen: true })
+          viewer
         ),
         _react2.default.createElement(
           'div',
@@ -30937,7 +30981,7 @@ var ViewerWidget = function (_Component) {
           { className: 'viewer-user' },
           _react2.default.createElement('img', { src: document.user.picture, width: '100' }),
           _react2.default.createElement(
-            'p',
+            'div',
             { className: 'user-content' },
             _react2.default.createElement(
               'h4',
@@ -30945,18 +30989,26 @@ var ViewerWidget = function (_Component) {
               'Fiche r\xE9alis\xE9e par ',
               document.user.name
             ),
-            'Cr\xE9\xE9 le ',
-            (0, _moment2.default)(document.modified_at).format("DD/MM/YYYY - hh:mm:ss")
-          ),
-          _react2.default.createElement(
-            'a',
-            { className: 'user-contact btn btn-primary', mailto: document.user.email },
-            'Contacter'
-          ),
-          _react2.default.createElement(
-            'a',
-            { className: 'user-link btn btn-primary', href: document.user.url },
-            'Voir son profil'
+            _react2.default.createElement(
+              'p',
+              null,
+              'Cr\xE9\xE9 le ',
+              (0, _moment2.default)(document.modified_at).format("DD/MM/YYYY - hh:mm:ss")
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'links-container' },
+              _react2.default.createElement(
+                'a',
+                { className: 'user-contact btn btn-primary', href: 'mailto:' + document.user.email },
+                'Contacter'
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'user-link btn btn-primary', href: document.user.url },
+                'Voir son profil'
+              )
+            )
           )
         ),
         document.history.length > 0 ? historyList : ''

@@ -44,21 +44,23 @@
   padding: 3em 6em;
   border-bottom: 1px solid #DDD;
   margin-bottom: 0;
+  display: flex;
 }
 
 .viewer-user img {
+  height: 120px;
   width: 120px;
   border-radius: 50%;
-  float: left;
   margin-right: 30px;
 }
 
 .viewer-user .user-content {
   display: block;
-  width: 75%;
-  float: left;
 }
 
+.viewer-user .links-container {
+  margin-top: 20px;
+}
 .viewer-user .user-link {
   margin-left: 20px;
 }

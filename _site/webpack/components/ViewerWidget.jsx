@@ -5,13 +5,37 @@ import swal from 'sweetalert2';
 import moment from 'moment';
 
 class ViewerWidget extends Component {
+  HANDLED_EXTENSIONS = {
+    viewerjs: ["PDF", "ODT", "ODS", "ODP", "ODG"," ODC", "ODF", "ODB", "ODI", "ODM", "OTT", "OTS", "OTP", "OTG"],
+    microsoft: ["DOCX"],
+    images: ["PNG", "JPG", "JPEG", "GIF"]
+  };
+  
+
   constructor(props) {
     super(props);
 
     // Extract params from URL
     var search = location.search.substring(1);
     if (!_.isEmpty(search)) {
-      var params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+      var params = {};
+      // Extract path separetaly, see below
+      // Extract the rest in the object
+      params = _.assign.apply(_,
+                              _.map(search.match(/&(\w+)=(\w+)/g), function(pair) {
+                                pair = pair.substring(1);
+                                var keyvalue = pair.split("=");
+                                var obj = {};
+                                obj[keyvalue[0]] = keyvalue[1];
+                                return obj;
+                              })
+                             );
+
+      // Extract path separetaly because it can contain special characters, like & and =
+      var _path = search.replace(search.match(/(&\w+=\w+)+$/ig)[0], '').split("=");
+      _path.shift();
+      _path = _path.join("=");
+      params.document = decodeURI(_path);
     } else {
       swal({
         title: 'Il y a un problème !',
@@ -21,21 +45,28 @@ class ViewerWidget extends Component {
       }).then(() => window.history.back());
     } 
 
-
     // Get the path
     var path = params.document;
     // Get the basename with extension
     var basename = _.last(path.split("/"));
-    
+
     var basename_split = basename.split('.');
     // Extract extension
     var extension = basename_split.pop();
     // Normalzie name
     var name = basename_split.join(".").split(/-|_/).join(' ');
 
+    var _ext = extension.toUpperCase();
+    // Check which handler is used for this document (viewerjs, microsoftviewer or just regular image)
+    var handler = _.includes(this.HANDLED_EXTENSIONS['viewerjs'], _ext) && 'viewerjs'
+        || _.includes(this.HANDLED_EXTENSIONS['microsoft'], _ext) && 'microsoft'
+        || _.includes(this.HANDLED_EXTENSIONS['images'], _ext) && 'images'
+        || null;
+
     this.state = {
       containerHeight: 1350,
       containerHeight: 960,
+      handler: handler,
       document: {
         name: name,
         description: null,
@@ -113,12 +144,33 @@ class ViewerWidget extends Component {
     var primary_cat = CategoriesConfig.PRIMARY_DISPLAY[document.primary_category];
     var category = _.last(document.categories);
     var color = CategoriesConfig.COLORS[category];
-
     console.log(document);
+
+    var viewer = null;
+    if (this.state.handler) {
+      if (this.state.handler == "viewerjs") {
+        viewer = (
+          <iframe src={`/js/vendor/ViewerJS/#../../../${document.path}`} width={this.state.containerWidth} height={this.state.containerHeight} allowFullScreen></iframe>
+        );
+      } else if (this.state.handler == "images") {
+        viewer = (
+          <div>
+            <img src={document.path} />
+          </div>
+        );
+      }
+    } else {
+      viewer = (
+        <div>
+          Ce type de document n'est pas géré par notre visionneuse.<br />
+          Vous pouvez cependant consulter le document en le téléchargeant directement.
+        </div>
+      );
+    }
+
 
     // Make sure it is not null
     document.history = document.history || [];
-    console.log(document.history);
     // History of commits
     const historyList = (
       <div className="viewer-history">
@@ -156,7 +208,7 @@ class ViewerWidget extends Component {
           </div>
         </div>
         <div className="viewer-container" ref="viewerContainer">
-          <iframe src={`/js/vendor/ViewerJS/#../../../${document.path}`} width={this.state.containerWidth} height={this.state.containerHeight} allowFullScreen></iframe>
+          {viewer}
         </div>
         <div className="viewer-description">
           {document.description}
@@ -168,12 +220,14 @@ class ViewerWidget extends Component {
         </div>
         <div className="viewer-user">
           <img src={document.user.picture} width="100"/>
-          <p className="user-content">
+          <div className="user-content">
             <h4>Fiche réalisée par {document.user.name}</h4>
-            Créé le {moment(document.modified_at).format("DD/MM/YYYY - hh:mm:ss")}
-          </p>
-          <a className="user-contact btn btn-primary" mailto={document.user.email}>Contacter</a>
-          <a className="user-link btn btn-primary" href={document.user.url}>Voir son profil</a>
+            <p>Créé le {moment(document.modified_at).format("DD/MM/YYYY - hh:mm:ss")}</p>
+            <div className="links-container">
+              <a className="user-contact btn btn-primary" href={`mailto:${document.user.email}`}>Contacter</a>
+              <a className="user-link btn btn-primary" href={document.user.url}>Voir son profil</a>
+            </div>
+          </div>
         </div>
         {document.history.length > 0 ? historyList : ''}
       </div>
