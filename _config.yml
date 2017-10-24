@@ -1,17 +1,22 @@
 theme: jekyll-theme-tactile
 
+exclude: ['node_modules']
+
 defaults:
   - scope:
       path: "files/1.méthodes"
     values:
+      parse: true
       methodes: true
   - scope:
       path: "files/2.modèles"
     values:
+      parse: true
       modeles: true
 
   - scope:
       path: "files/3.cas-d-usages"
     values:
+      parse: true
       casdusages: true
 

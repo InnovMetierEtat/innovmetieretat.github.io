@@ -1,0 +1,33 @@
+{
+  "name": "innov-metier-etat",
+  "version": "1.0.0",
+  "description": "Javascript needs for the project",
+  "main": "bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InnovMetierEtat/innovmetieretat.github.io.git"
+  },
+  "author": "Gabriel Dehan",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/InnovMetierEtat/innovmetieretat.github.io/issues"
+  },
+  "homepage": "https://github.com/InnovMetierEtat/innovmetieretat.github.io#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "moment": "^2.19.1",
+    "react": "^15.6.2",
+    "react-addons-update": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-stack-grid": "^0.5.0",
+    "sweetalert2": "^6.11.0",
+    "webpack": "^3.8.1"
+  }
+}
