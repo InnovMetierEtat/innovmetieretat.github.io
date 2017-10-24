@@ -1,5 +1,6 @@
 // We add an |apie| salt to the token so github doesn't delete it automaticaly (security measure)
-const token = "cb|apie|ed6838d816b01f386a1d52e1e8055a94ffe5|apie|aa";
+const token = "dc|apie|534d6bb2a585a58910299bb3a4edc0cee18c|apie|dc";
+
 
 // Removes the salt added to the token
 const desalinize = (function(t) { return t.replace("|apie|", "").replace("|apie|", ""); });
