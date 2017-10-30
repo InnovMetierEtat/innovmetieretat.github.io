@@ -7,11 +7,17 @@ module.exports = {
     path: path.resolve(__dirname + "/assets/javascript/"),
     filename: "bundle.js"
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    modules: [
+      'node_modules'
+    ]
+  },
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
-        //exclude: /(node_modules)/,
+        exclude: /(node_modules)/,
         loader: "babel-loader", // "babel-loader" is also a legal name to reference
         query: {
           presets: ["react", "env"],
