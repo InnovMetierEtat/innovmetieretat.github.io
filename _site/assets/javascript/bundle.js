@@ -75,7 +75,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 // We add an |apie| salt to the token so github doesn't delete it automaticaly (security measure)
-var token = "dc|apie|534d6bb2a585a58910299bb3a4edc0cee18c|apie|dc";
+var token = "dc|apie|534d6bb2a585a58910299bb3a4edc0cee18c|apie|0f";
 
 // Removes the salt added to the token
 var desalinize = function desalinize(t) {
