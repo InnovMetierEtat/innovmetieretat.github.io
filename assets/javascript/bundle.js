@@ -11131,6 +11131,8 @@ exports.default = {
     "juridique": "juridique",
     "lieux et évènements": "lieux",
     "lieux et evènements": "lieux", // Because someone MIGHT rename it without accents, who knows, this is open source amaright?
+    "lieux et evénements": "lieux", // Because someone MIGHT rename it with wrong accents
+    "lieux et événements": "lieux", // Because someone MIGHT rename it with wrong accents
     "marchés publics": "marches",
     "parangonnage": "parangonnage",
     "technologie": "technologies"
