@@ -29,8 +29,8 @@ class RessourcesWidget extends Component {
       return {
         name: object.basename,
         description: null,
-        primary_category: CategoriesConfig.PRIMARY[object.path.split("/")[2]],
-        categories: [ "prod-cnt", CategoriesConfig.SECONDARY[object.path.split("/")[3]] ],
+        primary_category: CategoriesConfig.PRIMARY[object.path.split("/")[2].toLowerCase()],
+        categories: [ "prod-cnt", CategoriesConfig.SECONDARY[object.path.split("/")[3].toLowerCase()] ],
         path: object.path.replace(/^\//, ""), // removes the first /
         extension: object.extname,
         modified_at: object.modified_time
@@ -109,7 +109,7 @@ class RessourcesWidget extends Component {
     if (this.state.fullsearch && history.pushState) {
       var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?search=' + value;
       window.history.pushState({ path: newurl }, '', newurl);
-    }    
+    }
   };
 
 
@@ -169,7 +169,7 @@ class RessourcesWidget extends Component {
           </ul>
         </div>
         <div className="ressources-search">
-          <input type="text" ref="search" onChange={this.filterByName} onKeyPress={this.filterByName} className="search-bar form-control" value={this.state.search_filter || ''} placeholder="Organiser un barcamp, ..."/>
+          <input type="text" ref="search" onChange={this.filterByName} onKeyPress={this.filterByName} className="search-bar form-control" value={this.state.search_filter || ''} placeholder="Tapez ici: organiser un barcamp, ..."/>
         </div>
         <div className={`menuSwitch ${this.state.fullsearch ? 'hide' : ''}`}>
           <ul>
@@ -190,7 +190,7 @@ class RessourcesWidget extends Component {
             </li>
             <li className={`${CategoriesConfig.COLORS['marches']}-border ${CategoriesConfig.COLORS['marches']}-bg-hover ${this.isSelectedClass('marches')}`}
                 onClick={this.categorySelect}
-                data-category="marches">
+sea                data-category="marches">
               Marchés publics
             </li>
             <li className={`${CategoriesConfig.COLORS['documentation']}-border ${CategoriesConfig.COLORS['documentation']}-bg-hover ${this.isSelectedClass('documentation')}`}

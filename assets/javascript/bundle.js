@@ -39372,8 +39372,8 @@ var RessourcesWidget = function (_Component) {
         return {
           name: object.basename,
           description: null,
-          primary_category: _categories2.default.PRIMARY[object.path.split("/")[2]],
-          categories: ["prod-cnt", _categories2.default.SECONDARY[object.path.split("/")[3]]],
+          primary_category: _categories2.default.PRIMARY[object.path.split("/")[2].toLowerCase()],
+          categories: ["prod-cnt", _categories2.default.SECONDARY[object.path.split("/")[3].toLowerCase()]],
           path: object.path.replace(/^\//, ""), // removes the first /
           extension: object.extname,
           modified_at: object.modified_time
@@ -39467,7 +39467,7 @@ var RessourcesWidget = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: 'ressources-search' },
-          _react2.default.createElement('input', { type: 'text', ref: 'search', onChange: this.filterByName, onKeyPress: this.filterByName, className: 'search-bar form-control', value: this.state.search_filter || '', placeholder: 'Organiser un barcamp, ...' })
+          _react2.default.createElement('input', { type: 'text', ref: 'search', onChange: this.filterByName, onKeyPress: this.filterByName, className: 'search-bar form-control', value: this.state.search_filter || '', placeholder: 'Tapez ici: organiser un barcamp, ...' })
         ),
         _react2.default.createElement(
           'div',
@@ -39500,7 +39500,7 @@ var RessourcesWidget = function (_Component) {
               'li',
               { className: _categories2.default.COLORS['marches'] + '-border ' + _categories2.default.COLORS['marches'] + '-bg-hover ' + this.isSelectedClass('marches'),
                 onClick: this.categorySelect,
-                'data-category': 'marches' },
+                sea: true, 'data-category': 'marches' },
               'March\xE9s publics'
             ),
             _react2.default.createElement(
@@ -40637,7 +40637,6 @@ module.exports = exports['default'];
 /* 333 */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
 
 module.exports = function chain(){
   var len = arguments.length
@@ -40658,28 +40657,6 @@ module.exports = function chain(){
     };
   })
 }
-=======
-
-module.exports = function chain(){
-  var len = arguments.length
-  var args = [];
-
-  for (var i = 0; i < len; i++)
-    args[i] = arguments[i]
-
-  args = args.filter(function(fn){ return fn != null })
-
-  if (args.length === 0) return undefined
-  if (args.length === 1) return args[0]
-
-  return args.reduce(function(current, next){
-    return function chainedFunction() {
-      current.apply(this, arguments);
-      next.apply(this, arguments);
-    };
-  })
-}
->>>>>>> 04388a14cb505dd53c0cafeea00692161ac69240
 
 
 /***/ }),
@@ -46941,7 +46918,7 @@ var ViewerWidget = function (_Component) {
             _react2.default.createElement(
               'h4',
               null,
-              'Fiche r\xE9alis\xE9e par ',
+              'Document propos\xE9 par ',
               document.user.name
             ),
             _react2.default.createElement(

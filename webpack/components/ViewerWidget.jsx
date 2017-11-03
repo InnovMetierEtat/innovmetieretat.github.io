@@ -221,7 +221,7 @@ class ViewerWidget extends Component {
         <div className="viewer-user">
           <img src={document.user.picture} width="100"/>
           <div className="user-content">
-            <h4>Fiche réalisée par {document.user.name}</h4>
+            <h4>Document proposé par {document.user.name}</h4>
             <p>Créé le {moment(document.modified_at).format("DD/MM/YYYY - hh:mm:ss")}</p>
             <div className="links-container">
               <a className="user-contact btn btn-primary" href={`mailto:${document.user.email}`}>Contacter</a>
