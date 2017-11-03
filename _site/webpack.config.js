@@ -1,13 +1,17 @@
 const path = require('path');
 
-console.log(path.resolve(__dirname + "/assets/javascript/"));
-
 module.exports = {
   // webpack folder’s entry js — excluded from jekyll’s build process.
   entry: "./webpack/entry.js",
   output: {
     path: path.resolve(__dirname + "/assets/javascript/"),
     filename: "bundle.js"
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    modules: [
+      'node_modules'
+    ]
   },
   module: {
     loaders: [

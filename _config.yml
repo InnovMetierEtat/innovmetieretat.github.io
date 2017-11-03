@@ -1,6 +1,7 @@
 theme: jekyll-theme-tactile
 
-exclude: ['node_modules']
+include: 
+  - node_modules
 
 defaults:
   - scope:
