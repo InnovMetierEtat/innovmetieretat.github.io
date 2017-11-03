@@ -8,23 +8,23 @@
      {
        lat: -0.1279688,
        lng: 51.5077286,
-       description: '',
        color: 'applegreen',
-       icon: 'idea'
+       icon: 'idea',
+       url: 'http://google.com'
      },
      {
        lat: -0.1244324,
        lng: 51.5006728,
-       description: '',
        color: 'orange',
-       icon: 'model'
+       icon: 'model',
+       url: 'http://google.com'
      },
      {
        lat: -0.119623, 
        lng: 51.503308,
-       description: '',
        color: 'purple',
-       icon: 'usecase'
+       icon: 'usecase',
+       url: 'http://google.com'
      },
    ]
  }
@@ -46,20 +46,23 @@
  coordinates.markers.forEach(function(marker) {
    var feature = new OpenLayers.Feature.Vector(
      new OpenLayers.Geometry.Point( marker.lat, marker.lng  ).transform(epsg4326, projectTo),
-     {description: marker.description} ,
-     {externalGraphic: 'assets/images/pictos/picto-' + marker.icon + '-' + marker.color + '.png', graphicHeight: 35, graphicWidth: 35, graphicXOffset:-12, graphicYOffset:-25  }
+     { url: marker.url } ,
+     { externalGraphic: 'assets/images/pictos/picto-' + marker.icon + '-' + marker.color + '.png', graphicHeight: 35, graphicWidth: 35, graphicXOffset:-12, graphicYOffset:-25 }
    );    
    vectorLayer.addFeatures(feature);
  });
  // Define markers as "features" of the vector layer:
 
-
  map.addLayer(vectorLayer);
-
 
  //Add a selector control to the vectorLayer with popup functions
  var controls = {
-   selector: new OpenLayers.Control.SelectFeature(vectorLayer, { onSelect: createPopup, onUnselect: destroyPopup })
+   selector: new OpenLayers.Control.SelectFeature(vectorLayer, { onSelect: openLink, onUnselect: openLink })
+ };
+
+ function openLink(feature) {
+   var win = window.open(feature.data.url);
+   win.focus();
  };
 
  function createPopup(feature) {
@@ -80,7 +83,7 @@
    feature.popup = null;
  }
 
-// map.addControl(controls['selector']);
-// controls['selector'].activate();
+ map.addControl(controls['selector']);
+ controls['selector'].activate();
 
 </script>

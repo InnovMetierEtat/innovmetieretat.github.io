@@ -515,6 +515,7 @@ img {
   margin-top: 25px;
 }
 
+/* Color for backgrounds */
 .applegreen { background-color: #B4D200!important;}
 .black { background-color: #7C7C7B!important; }
 .lightorange { background-color: #FACD23!important; }
@@ -526,6 +527,7 @@ img {
 .lightbrown { background-color: #DCCDB4!important; }
 .purple { background-color: #E1B4FA!important; }
 
+/* Color for fonts */
 .applegreen-font { color: #B4D200!important;}
 .black-font { color: #7C7C7B!important; }
 .lightorange-font { color: #FACD23!important; }
@@ -537,6 +539,7 @@ img {
 .lightbrown-font { color: #DCCDB4!important; }
 .purple-font { color: #E1B4FA!important; }
 
+/* Color for borders */
 .applegreen-border { border-color: #B4D200!important;}
 .black-border { border-color: #7C7C7B!important; }
 .lightorange-border { border-color: #FACD23!important; }
