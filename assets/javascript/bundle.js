@@ -39256,6 +39256,12 @@ var RessourcesWidget = function (_Component) {
       // Responsiveness
       _this.updateDimensions();
 
+      // Fetch current display mode from cookies & sets it if it doesn't exist (grid by default)
+      if (_.isUndefined($.cookie('apie-view'))) {
+        $.cookie('apie-view', 'grid', { expires: 14, path: '/' });
+      }
+      _this.setState({ list_mode: $.cookie('apie-view') == 'list' }); // Set the state according to the cookies
+
       // Fetch search bar data if needed
       if (_this.state.fullsearch) {
         // URL Params
@@ -39305,13 +39311,15 @@ var RessourcesWidget = function (_Component) {
 
     _this.gridToggle = function (e) {
       _this.setState({ list_mode: false });
+      $.cookie('apie-view', 'grid'); // Sets the cookies
       setTimeout(function () {
         return _this.grid.updateLayout();
       }, 400); // Because animation makes weird things sometimes
     };
 
     _this.listToggle = function (e) {
-      _this.setState({ list_mode: true });
+      _this.setState({ list_mode: true }); // Sets the cookies
+      $.cookie('apie-view', 'list');
     };
 
     _this.filterByName = function (e) {
@@ -47002,7 +47010,7 @@ var ViewerWidget = function (_Component) {
             object.description = commit.message;
             object.modified_at = new Date(commit.author.date);
             object.user = {
-              picture: 'https://github.com/' + (data.author ? data.author.login : '') + '.png', // TODO default image
+              picture: data.author ? 'https://github.com/' + data.author.login + '.png' : object.user.picture, // Default picture 
               url: data.author ? data.author.html_url : '',
               name: commit.author ? commit.author.name : "Anonymous",
               email: commit.author ? commit.author.email : ''
@@ -47080,7 +47088,7 @@ var ViewerWidget = function (_Component) {
       extension: extension,
       modified_at: null,
       user: {
-        picture: '',
+        picture: 'assets/images/avatars/identicon.png',
         url: '#',
         name: "Anonymous",
         email: null

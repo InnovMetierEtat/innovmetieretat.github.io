@@ -47,6 +47,12 @@ class RessourcesWidget extends Component {
     // Responsiveness
     this.updateDimensions();
 
+    // Fetch current display mode from cookies & sets it if it doesn't exist (grid by default)
+    if(_.isUndefined($.cookie('apie-view'))) {
+      $.cookie('apie-view', 'grid', { expires: 14, path: '/' });
+    }
+    this.setState({ list_mode: $.cookie('apie-view') == 'list' }); // Set the state according to the cookies
+
     // Fetch search bar data if needed
     if (this.state.fullsearch) {
       // URL Params
@@ -98,11 +104,12 @@ class RessourcesWidget extends Component {
 
   gridToggle = (e) => {
     this.setState({ list_mode: false });
+    $.cookie('apie-view', 'grid'); // Sets the cookies
     setTimeout(() => this.grid.updateLayout(), 400); // Because animation makes weird things sometimes
-
   }
   listToggle = (e) => {
-    this.setState({ list_mode: true });
+    this.setState({ list_mode: true }); // Sets the cookies
+    $.cookie('apie-view', 'list');
   };
 
   filterByName = (e) => {

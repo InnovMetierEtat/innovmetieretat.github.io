@@ -76,7 +76,7 @@ class ViewerWidget extends Component {
         extension: extension,
         modified_at: null,
         user: {
-          picture: '',
+          picture: 'assets/images/avatars/identicon.png',
           url: '#',
           name: "Anonymous",
           email: null
@@ -116,7 +116,7 @@ class ViewerWidget extends Component {
           object.description = commit.message;
           object.modified_at = new Date(commit.author.date);
           object.user = {
-            picture: `https://github.com/${data.author ? data.author.login : ''}.png`, // TODO default image
+            picture: data.author ? `https://github.com/${data.author.login}.png` : object.user.picture, // Default picture 
             url: data.author ? data.author.html_url : '',
             name: commit.author ? commit.author.name : "Anonymous",
             email: commit.author ? commit.author.email : ''
