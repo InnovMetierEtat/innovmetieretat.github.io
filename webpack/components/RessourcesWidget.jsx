@@ -6,7 +6,8 @@ import GithubRepo from '../lib/github.js';
 import CategoriesConfig from "../config/categories.js";
 
 class RessourcesWidget extends Component {
-  EXTENSIONS_WHITELIST = ['JPG','JPEG', 'PNG', 'PDF', 'ODP', 'ODT', 'ODS', 'DOC', 'PPTX', 'XLS'];
+  // See also ViewerWidget.jsx#L8
+  EXTENSIONS_WHITELIST = ["PDF", "ODT", "ODS", "ODP", "ODG"," ODC", "ODF", "ODB", "ODI", "ODM", "OTT", "OTS", "OTP", "OTG", "DOC", "DOCX", "PPT", "PPTX", "XLS", "XLSX", "PNG", "JPG", "JPEG", "GIF"];
 
   constructor(props) {
     super(props);
@@ -68,6 +69,8 @@ class RessourcesWidget extends Component {
 
     // TODO: Should be batch
     _.each(docs, (file) => {
+      // List all commits for a given file path, we will take the last one to extract information
+      // See: https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
       GithubRepo.client.listCommits({path: file.path}, (error, commits) => {
         var message = "Pas de description";
         var date = Date.now();

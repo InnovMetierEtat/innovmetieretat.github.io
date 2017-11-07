@@ -5,12 +5,12 @@ import swal from 'sweetalert2';
 import moment from 'moment';
 
 class ViewerWidget extends Component {
+  // See also RessourcesWidget.jsx#L8
   HANDLED_EXTENSIONS = {
     viewerjs: ["PDF", "ODT", "ODS", "ODP", "ODG"," ODC", "ODF", "ODB", "ODI", "ODM", "OTT", "OTS", "OTP", "OTG"],
     microsoft: ["DOC", "DOCX", "PPT", "PPTX", 'XLS', 'XLSX'],
     images: ["PNG", "JPG", "JPEG", "GIF"]
   };
-  
 
   constructor(props) {
     super(props);
@@ -103,6 +103,9 @@ class ViewerWidget extends Component {
     this.updateDimensions();
 
     var file = this.state.document;
+    // List all commits for a given file path, we will mainly us the last one to extract information
+    // but also the list of commit to create an "history"
+    // See: https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
     GithubRepo.client.listCommits({path: file.path}, (error, commits) => {
       var message = "Pas de description";
 
@@ -112,7 +115,7 @@ class ViewerWidget extends Component {
 
         const extractDataFromCommit = (data, object) => {
           var commit = data.commit;
-          //console.log(data);
+
           object.description = commit.message;
           object.modified_at = new Date(commit.author.date);
           object.user = {
@@ -144,7 +147,6 @@ class ViewerWidget extends Component {
     var primary_cat = CategoriesConfig.PRIMARY_DISPLAY[document.primary_category];
     var category = _.last(document.categories);
     var color = CategoriesConfig.COLORS[category];
-    console.log(document);
 
     var viewer = null;
     if (this.state.handler) {

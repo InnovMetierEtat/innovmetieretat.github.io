@@ -15,7 +15,6 @@ export default {
 
   SECONDARY: {
     "créativité": "creativite",
-    "créativité": "creativite",
     "autres": "autres",
     "communication": "communication",
     "documentation": "documentation",
