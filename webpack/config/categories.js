@@ -15,15 +15,16 @@ export default {
 
   SECONDARY: {
     "créativité": "creativite",
+    "créativité": "creativite",
     "autres": "autres",
     "communication": "communication",
     "documentation": "documentation",
     "inventions": "inventions",
     "juridique": "juridique",
-    "lieux et évènements": "lieux",
+    "lieux et évènements": "lieux", 
     "lieux et evènements": "lieux", // Because someone MIGHT rename it without accents, who knows, this is open source amaright?
-    "lieux et evénements": "lieux", // Because someone MIGHT rename it with wrong accents
-    "lieux et événements": "lieux", // Because someone MIGHT rename it with wrong accents
+    "lieux et evénements": "lieux", // Because someone MIGHT rename it without accents on the first letter and "old french" accents
+    "lieux et événements": "lieux", // Because someone MIGHT rename it with "old frenc" accents
     "marchés publics": "marches",
     "parangonnage": "parangonnage",
     "technologie": "technologies"
