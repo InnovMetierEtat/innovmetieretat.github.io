@@ -7,7 +7,7 @@ import moment from 'moment';
 class ViewerWidget extends Component {
   HANDLED_EXTENSIONS = {
     viewerjs: ["PDF", "ODT", "ODS", "ODP", "ODG"," ODC", "ODF", "ODB", "ODI", "ODM", "OTT", "OTS", "OTP", "OTG"],
-    microsoft: ["DOCX"],
+    microsoft: ["DOC", "DOCX", "PPT", "PPTX", 'XLS', 'XLSX'],
     images: ["PNG", "JPG", "JPEG", "GIF"]
   };
   
@@ -76,7 +76,7 @@ class ViewerWidget extends Component {
         extension: extension,
         modified_at: null,
         user: {
-          picture: '',
+          picture: 'assets/images/avatars/identicon.png',
           url: '#',
           name: "Anonymous",
           email: null
@@ -116,7 +116,7 @@ class ViewerWidget extends Component {
           object.description = commit.message;
           object.modified_at = new Date(commit.author.date);
           object.user = {
-            picture: `https://github.com/${data.author ? data.author.login : ''}.png`, // TODO default image
+            picture: data.author ? `https://github.com/${data.author.login}.png` : object.user.picture, // Default picture 
             url: data.author ? data.author.html_url : '',
             name: commit.author ? commit.author.name : "Anonymous",
             email: commit.author ? commit.author.email : ''
@@ -156,6 +156,15 @@ class ViewerWidget extends Component {
         viewer = (
           <div>
             <img src={document.path} />
+          </div>
+        );
+      } else if (this.state.handler == "microsoft") {
+        // If needed we could also use the google drive
+        // viewer instead: http://docs.google.com/gview?url=PATH_TO_DOC
+        // Right now we are using microsoft official viewer to handle microsoft type documents
+        viewer = (
+          <div>
+            <iframe src={`https://view.officeapps.live.com/op/embed.aspx?src=${location.origin}/${document.path}`} width={this.state.containerWidth} height={this.state.containerHeight} allowFullScreen></iframe>
           </div>
         );
       }

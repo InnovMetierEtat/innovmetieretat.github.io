@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import DocumentThumb from './DocumentThumb.jsx';
 import StackGrid from "react-stack-grid";
 import GithubRepo from '../lib/github.js';
@@ -15,7 +16,7 @@ class RessourcesWidget extends Component {
       fullsearch: props.fullsearch == "" ? false : true,
       list_mode: false, 
       container_width: 700, // Used for pinterest type display to be responsive
-      max_displayed: _.isEmpty(props.max) ? null : parseInt(props.max),
+      max_displayed: (!_.isNumber(props.max) && _.isEmpty(props.max)) ? null : parseInt(props.max),
       category: "prod-cnt",
       documents: this.normalizeData(props.dataSet)
     };
@@ -46,6 +47,12 @@ class RessourcesWidget extends Component {
     // Responsiveness
     this.updateDimensions();
 
+    // Fetch current display mode from cookies & sets it if it doesn't exist (grid by default)
+    if(_.isUndefined($.cookie('apie-view'))) {
+      $.cookie('apie-view', 'grid', { expires: 14, path: '/' });
+    }
+    this.setState({ list_mode: $.cookie('apie-view') == 'list' }); // Set the state according to the cookies
+
     // Fetch search bar data if needed
     if (this.state.fullsearch) {
       // URL Params
@@ -63,13 +70,17 @@ class RessourcesWidget extends Component {
     _.each(docs, (file) => {
       GithubRepo.client.listCommits({path: file.path}, (error, commits) => {
         var message = "Pas de description";
+        var date = Date.now();
 
         if (!_.isEmpty(commits)) {
           // take the first commit
           var commit = _.last(commits).commit;
           message = commit.message;
+          date = (commit.committer && commit.committer.date) || date;
+
         }
         file.description = message;
+        file.modified_at = new Date(date);
 
         this.setState({ documents: docs });  
       });
@@ -93,11 +104,12 @@ class RessourcesWidget extends Component {
 
   gridToggle = (e) => {
     this.setState({ list_mode: false });
+    $.cookie('apie-view', 'grid'); // Sets the cookies
     setTimeout(() => this.grid.updateLayout(), 400); // Because animation makes weird things sometimes
-
   }
   listToggle = (e) => {
-    this.setState({ list_mode: true });
+    this.setState({ list_mode: true }); // Sets the cookies
+    $.cookie('apie-view', 'list');
   };
 
   filterByName = (e) => {
@@ -124,10 +136,14 @@ class RessourcesWidget extends Component {
       var documents_list = for_current_category;
     }
 
+    // Sort by date
+    documents_list = _.sortBy(documents_list, [function(doc) { return -doc.modified_at; }]);
+
     // If we need to display only 6 for instance
     if (this.state.max_displayed) {
       documents_list = _.take(documents_list, this.state.max_displayed);
     }
+
     return _.map(documents_list, (document, key) => {
       return <DocumentThumb key={key} {...document} />;
     });
@@ -164,8 +180,8 @@ class RessourcesWidget extends Component {
       <div className="glView">
         <div className="switcher">
           <ul>
-            <li id="grid" onClick={this.gridToggle} className={`grid ${!this.state.list_mode ? 'grid-active' : ''}`}><i className="fa fa-th-large"></i></li>
-            <li id="list" onClick={this.listToggle} className={`list ${this.state.list_mode ? 'list-active' : ''}`}><i className="fa fa-align-justify"></i></li>
+            <li onClick={this.gridToggle} className={`grid ${!this.state.list_mode ? 'grid-active' : ''}`}><i className="fa fa-th-large"></i></li>
+            <li onClick={this.listToggle} className={`list ${this.state.list_mode ? 'list-active' : ''}`}><i className="fa fa-align-justify"></i></li>
           </ul>
         </div>
         <div className="ressources-search">
@@ -190,7 +206,7 @@ class RessourcesWidget extends Component {
             </li>
             <li className={`${CategoriesConfig.COLORS['marches']}-border ${CategoriesConfig.COLORS['marches']}-bg-hover ${this.isSelectedClass('marches')}`}
                 onClick={this.categorySelect}
-sea                data-category="marches">
+                data-category="marches">
               Marchés publics
             </li>
             <li className={`${CategoriesConfig.COLORS['documentation']}-border ${CategoriesConfig.COLORS['documentation']}-bg-hover ${this.isSelectedClass('documentation')}`}
