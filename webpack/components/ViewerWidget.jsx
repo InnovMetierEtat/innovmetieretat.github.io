@@ -112,7 +112,7 @@ class ViewerWidget extends Component {
 
         const extractDataFromCommit = (data, object) => {
           var commit = data.commit;
-          //console.log(data);
+
           object.description = commit.message;
           object.modified_at = new Date(commit.author.date);
           object.user = {
@@ -144,7 +144,6 @@ class ViewerWidget extends Component {
     var primary_cat = CategoriesConfig.PRIMARY_DISPLAY[document.primary_category];
     var category = _.last(document.categories);
     var color = CategoriesConfig.COLORS[category];
-    console.log(document);
 
     var viewer = null;
     if (this.state.handler) {

@@ -27151,7 +27151,7 @@ Object.defineProperty(exports, "__esModule", {
 // We add an |apie| salt to the token so github doesn't delete it automaticaly (security measure)
 var token = "dc|apie|534d6bb2a585a58910299bb3a4edc0cee18c|apie|0f";
 
-// Removes the salt added to the token
+// Removes the salt "|apie|" that had been added to the token 
 var desalinize = function desalinize(t) {
   return t.replace("|apie|", "").replace("|apie|", "");
 };
@@ -27159,9 +27159,11 @@ var desalinize = function desalinize(t) {
 var github = new GitHub({ token: desalinize(token) });
 var client = github.getRepo("InnovMetierEtat", "innovmetieretat.github.io");
 
-// Get all commits
+// GithubRepo object
 var GithubRepo = {
+  // Client
   client: client,
+  // Get files method, get all files recursively
   get_files: function get_files(callback) {
     client.listCommits().then(function (commits) {
       var last_commit = _.last(commits.data);
@@ -47006,7 +47008,7 @@ var ViewerWidget = function (_Component) {
 
           var extractDataFromCommit = function extractDataFromCommit(data, object) {
             var commit = data.commit;
-            //console.log(data);
+
             object.description = commit.message;
             object.modified_at = new Date(commit.author.date);
             object.user = {
@@ -47104,7 +47106,6 @@ var ViewerWidget = function (_Component) {
       var primary_cat = _categories2.default.PRIMARY_DISPLAY[document.primary_category];
       var category = _.last(document.categories);
       var color = _categories2.default.COLORS[category];
-      console.log(document);
 
       var viewer = null;
       if (this.state.handler) {
