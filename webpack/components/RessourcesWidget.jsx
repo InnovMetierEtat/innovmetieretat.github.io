@@ -6,7 +6,8 @@ import GithubRepo from '../lib/github.js';
 import CategoriesConfig from "../config/categories.js";
 
 class RessourcesWidget extends Component {
-  EXTENSIONS_WHITELIST = ['JPG','JPEG', 'PNG', 'PDF', 'ODP', 'ODT', 'ODS', 'DOC', 'PPTX', 'XLS'];
+  // See also ViewerWidget.jsx#L8
+  EXTENSIONS_WHITELIST = ["PDF", "ODT", "ODS", "ODP", "ODG"," ODC", "ODF", "ODB", "ODI", "ODM", "OTT", "OTS", "OTP", "OTG", "DOC", "DOCX", "PPT", "PPTX", "XLS", "XLSX", "PNG", "JPG", "JPEG", "GIF"];
 
   constructor(props) {
     super(props);

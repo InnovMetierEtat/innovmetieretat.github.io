@@ -11107,11 +11107,6 @@ module.exports = getEventCharCode;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _SECONDARY;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 exports.default = {
   // Helpful because the name of the folders can be complex and have accents
   // Primary categories (Methode, Model, usecase)
@@ -11127,9 +11122,21 @@ exports.default = {
     "usecase": "Cas d'usage"
   },
 
-  SECONDARY: (_SECONDARY = {
-    "créativité": "creativite"
-  }, _defineProperty(_SECONDARY, "cr\xE9ativit\xE9", "creativite"), _defineProperty(_SECONDARY, "autres", "autres"), _defineProperty(_SECONDARY, "communication", "communication"), _defineProperty(_SECONDARY, "documentation", "documentation"), _defineProperty(_SECONDARY, "inventions", "inventions"), _defineProperty(_SECONDARY, "juridique", "juridique"), _defineProperty(_SECONDARY, "lieux et évènements", "lieux"), _defineProperty(_SECONDARY, "lieux et evènements", "lieux"), _defineProperty(_SECONDARY, "lieux et evénements", "lieux"), _defineProperty(_SECONDARY, "lieux et événements", "lieux"), _defineProperty(_SECONDARY, "marchés publics", "marches"), _defineProperty(_SECONDARY, "parangonnage", "parangonnage"), _defineProperty(_SECONDARY, "technologie", "technologies"), _SECONDARY),
+  SECONDARY: {
+    "créativité": "creativite",
+    "autres": "autres",
+    "communication": "communication",
+    "documentation": "documentation",
+    "inventions": "inventions",
+    "juridique": "juridique",
+    "lieux et évènements": "lieux",
+    "lieux et evènements": "lieux", // Because someone MIGHT rename it without accents, who knows, this is open source amaright?
+    "lieux et evénements": "lieux", // Because someone MIGHT rename it without accents on the first letter and "old french" accents
+    "lieux et événements": "lieux", // Because someone MIGHT rename it with "old frenc" accents
+    "marchés publics": "marches",
+    "parangonnage": "parangonnage",
+    "technologie": "technologies"
+  },
 
   // Color schema for every category, if you add new ones, add here and also in the HTML below
   COLORS: {
@@ -39248,7 +39255,7 @@ var RessourcesWidget = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (RessourcesWidget.__proto__ || Object.getPrototypeOf(RessourcesWidget)).call(this, props));
 
-    _this.EXTENSIONS_WHITELIST = ['JPG', 'JPEG', 'PNG', 'PDF', 'ODP', 'ODT', 'ODS', 'DOC', 'PPTX', 'XLS'];
+    _this.EXTENSIONS_WHITELIST = ["PDF", "ODT", "ODS", "ODP", "ODG", " ODC", "ODF", "ODB", "ODI", "ODM", "OTT", "OTS", "OTP", "OTG", "DOC", "DOCX", "PPT", "PPTX", "XLS", "XLSX", "PNG", "JPG", "JPEG", "GIF"];
 
     _this.updateDimensions = function () {
       _this.setState({ container_width: $(_this.refs.container).width() });
@@ -39376,6 +39383,8 @@ var RessourcesWidget = function (_Component) {
     };
     return _this;
   }
+  // See also ViewerWidget.jsx#L8
+
 
   _createClass(RessourcesWidget, [{
     key: 'normalizeData',
@@ -47098,6 +47107,8 @@ var ViewerWidget = function (_Component) {
     }), _this$state);
     return _this;
   }
+  // See also RessourcesWidget.jsx#L8
+
 
   _createClass(ViewerWidget, [{
     key: 'render',

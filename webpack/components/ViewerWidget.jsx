@@ -5,12 +5,12 @@ import swal from 'sweetalert2';
 import moment from 'moment';
 
 class ViewerWidget extends Component {
+  // See also RessourcesWidget.jsx#L8
   HANDLED_EXTENSIONS = {
     viewerjs: ["PDF", "ODT", "ODS", "ODP", "ODG"," ODC", "ODF", "ODB", "ODI", "ODM", "OTT", "OTS", "OTP", "OTG"],
     microsoft: ["DOC", "DOCX", "PPT", "PPTX", 'XLS', 'XLSX'],
     images: ["PNG", "JPG", "JPEG", "GIF"]
   };
-  
 
   constructor(props) {
     super(props);

@@ -29,6 +29,12 @@ innovmetieretat.github.io/
 └── xpage.html
 ```
 
+## Handled document types
+
+- Open source: `"PDF", "ODT", "ODS", "ODP", "ODG"," ODC", "ODF", "ODB", "ODI", "ODM", "OTT", "OTS", "OTP", "OTG"`
+- Closed source: `"DOC", "DOCX", "PPT", "PPTX", "XLS", "XLSX"` 
+- Images: `"PNG", "JPG", "JPEG", "GIF"`
+
 ## Libraries used:
 
 ### Github
@@ -36,6 +42,10 @@ innovmetieretat.github.io/
 
 ### React 
 - https://medium.com/@allizadrozny/using-webpack-and-react-with-jekyll-cfe137f8a2cc
+
+### Viewer
+- ViewerJS
+- Microsoft official viewer
 
 ### Misc
 - Lodash: https://lodash.com
@@ -121,6 +131,93 @@ $ git pull origin development
 
 ### Have fun!
 
-## TODO
+# Guides
 
-Tutorial on how to add new categories ?
+## Adding a new subcategory of documents
+
+Current categories are:
+```
+créativité
+autres
+communication
+documentation
+inventions
+juridique
+lieux et évènements
+marchés publics
+parangonnage
+technologie
+```
+
+If you ever wish to add a new one, a few things need to be done:
+- First, you need to add a folder for the category in: 
+  - `files/1.méthodes/`
+  - `files/2.modèles/`
+  - `files/3.cas-d-usages/`
+
+- Once done, go to the file https://github.com/InnovMetierEtat/innovmetieretat.github.io/blob/development/webpack/config/categories.js#L16, and add your own shortname for the category.
+- Don't forget to also go to https://github.com/InnovMetierEtat/innovmetieretat.github.io/blob/development/webpack/config/categories.js#L34 and add a color for your category. A full display of colors can be found in https://github.com/InnovMetierEtat/innovmetieretat.github.io/tree/development/assets/images/pictos, where the name of files are `picto-[primarycategory]-[color].png` 
+- Then you'll need to make sure you've added your category to the menu: https://github.com/InnovMetierEtat/innovmetieretat.github.io/blob/development/webpack/components/RessourcesWidget.jsx#L190, don't forget to use the shortname you have defined during step [2] !
+- If you ever want to add more color or modify the associated styles for categories/colors, the css is there: https://github.com/InnovMetierEtat/innovmetieretat.github.io/blob/master/css/templatemo_style.css#L518
+
+
+## Adding new places ("lieux")
+
+For "lieux", everything takes places in this file: https://github.com/InnovMetierEtat/innovmetieretat.github.io/blob/master/_includes/widgets/map.html#L7
+
+Each place has a set of information attached:
+```javascript
+   markers: [
+     {
+       lat: -0.1279688,         // Latitude
+       lng: 51.5077286,         // Longitude
+       color: 'applegreen',     // Color used for the picto (see assets/images/pictos)
+       icon: 'idea',            // Category used for the picto (see assets/images/pictos)
+       url: 'http://google.com' // Page on which to go to when clicking on the icon
+     },
+     {
+       lat: -0.119623, 
+       lng: 51.503308,
+       color: 'purple',
+       icon: 'usecase',
+       url: 'http://google.com'
+     },
+     // [...]
+   ]
+```
+Adding a new one is as simple as adding a new entry to this array.
+
+## Adding a new testimony
+
+All testimony reside inside the folder: https://github.com/InnovMetierEtat/innovmetieretat.github.io/tree/master/pages/temoignages
+
+If you want to add a new one, just create a new file with this basic layout:
+
+```html
+---
+title: Georges B.
+permalink: parole-georges.html
+layout: default
+---
+
+<div>
+  <div class="apie-header viewer-header blue-border">
+    <img class="img-responsive center-block" src="assets/images/pictos/picto-usecase-blue.png" />
+    <div class="viewer-primary page-category">
+      Parole d'innovateur
+      <div class="header-separator"></div>
+    </div>
+    <div class="page-title blue-font">
+      Georges B.
+    </div>
+  </div>
+  <div class="testimony-container">
+    Lorem ipsum.
+  </div>
+</div>
+```
+Be clever and modify the relevant parts ;)
+
+Then once you are done with your page, link it in the homepage like we did here: https://github.com/InnovMetierEtat/innovmetieretat.github.io/blob/master/index.html#L175
+
+Et voilà!
