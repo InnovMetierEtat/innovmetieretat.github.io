@@ -170,7 +170,7 @@ class ViewerWidget extends Component {
       }
     } else {
       viewer = (
-        <div>
+        <div className="no-handlers">
           Ce type de document n'est pas géré par notre visionneuse.<br />
           Vous pouvez cependant consulter le document en le téléchargeant directement.
         </div>

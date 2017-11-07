@@ -47129,7 +47129,7 @@ var ViewerWidget = function (_Component) {
       } else {
         viewer = _react2.default.createElement(
           'div',
-          null,
+          { className: 'no-handlers' },
           'Ce type de document n\'est pas g\xE9r\xE9 par notre visionneuse.',
           _react2.default.createElement('br', null),
           'Vous pouvez cependant consulter le document en le t\xE9l\xE9chargeant directement.'
