@@ -16,7 +16,10 @@
   padding: 13px 0 0 0;
   background-color: #b3b3b3;
 }
-
+.no-handlers {
+  padding: 0.8em 2.4em 1.8em 2.4em;
+  font-weight: bold;
+}
 .viewer-description {
   padding: 3em 6em;
   border-bottom: 1px solid #EEE;
