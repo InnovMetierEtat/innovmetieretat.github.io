@@ -103,6 +103,9 @@ class ViewerWidget extends Component {
     this.updateDimensions();
 
     var file = this.state.document;
+    // List all commits for a given file path, we will mainly us the last one to extract information
+    // but also the list of commit to create an "history"
+    // See: https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
     GithubRepo.client.listCommits({path: file.path}, (error, commits) => {
       var message = "Pas de description";
 

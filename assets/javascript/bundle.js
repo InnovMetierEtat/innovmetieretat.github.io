@@ -39286,6 +39286,8 @@ var RessourcesWidget = function (_Component) {
 
       // TODO: Should be batch
       _.each(docs, function (file) {
+        // List all commits for a given file path, we will take the last one to extract information
+        // See: https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
         _github2.default.client.listCommits({ path: file.path }, function (error, commits) {
           var message = "Pas de description";
           var date = Date.now();
@@ -47008,6 +47010,9 @@ var ViewerWidget = function (_Component) {
       _this.updateDimensions();
 
       var file = _this.state.document;
+      // List all commits for a given file path, we will mainly us the last one to extract information
+      // but also the list of commit to create an "history"
+      // See: https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
       _github2.default.client.listCommits({ path: file.path }, function (error, commits) {
         var message = "Pas de description";
 

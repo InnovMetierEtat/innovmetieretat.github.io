@@ -69,6 +69,8 @@ class RessourcesWidget extends Component {
 
     // TODO: Should be batch
     _.each(docs, (file) => {
+      // List all commits for a given file path, we will take the last one to extract information
+      // See: https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
       GithubRepo.client.listCommits({path: file.path}, (error, commits) => {
         var message = "Pas de description";
         var date = Date.now();
